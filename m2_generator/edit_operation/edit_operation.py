@@ -18,7 +18,7 @@ def edge_match(e1, e2):
 
 
 def node_match(n1, n2):
-    if ('ids' in n2):
+    if 'ids' in n2:
         return n1['type'] in n2['type']
     else:
         return ((n1['type'] == n2['type']) and

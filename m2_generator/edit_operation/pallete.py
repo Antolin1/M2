@@ -10,23 +10,53 @@ def node_match(n1, n2):
     return n1['type'] == n2['type']
 
 
+def compute_dic_nodes(edit_operations, initial_graphs):
+    set_nodes = set()
+    for edit_operation in edit_operations:
+        for pattern in edit_operation.patterns:
+            for n in pattern:
+                if isinstance(pattern.nodes[n]['type'], list):
+                    for t in pattern.nodes[n]['type']:
+                        set_nodes.add(t)
+                else:
+                    set_nodes.add(pattern.nodes[n]['type'])
+    for graph in initial_graphs:
+        for n in graph:
+            if isinstance(graph.nodes[n]['type'], list):
+                for t in graph.nodes[n]['type']:
+                    set_nodes.add(t)
+            else:
+                set_nodes.add(graph.nodes[n]['type'])
+    nodes = list(set_nodes)
+    return {y: x for x, y in enumerate(nodes)}
+
+
+def compute_dic_edges(edit_operations, initial_graphs):
+    set_edges = set()
+    for edit_operation in edit_operations:
+        for pattern in edit_operation.patterns:
+            for _, _, d in pattern.edges(data=True):
+                set_edges.add(d['type'])
+    for graph in initial_graphs:
+        for _, _, d in graph.edges(data=True):
+            set_edges.add(d['type'])
+    edges = list(set_edges)
+    return {y: x for x, y in enumerate(edges)}
+
+
 class Pallete:
     # editOperations: {x:y} x is id and y is object edit op
     # dic_nodes: {x:y} x is str and y is id (same to dic_edges)
     def __init__(self, edit_operations,
-                 dic_nodes,
-                 dic_edges,
                  initial_graphs,
-                 max_len,
-                 separator,
-                 shuffle=True):
+                 max_len=2,
+                 shuffle=False):
         self.edit_operations = edit_operations
         self.initial_graphs = initial_graphs
-        self.dic_nodes = dic_nodes
-        self.dic_edges = dic_edges
+        self.dic_nodes = compute_dic_nodes(edit_operations, initial_graphs)
+        self.dic_edges = compute_dic_edges(edit_operations, initial_graphs)
         self.shuffle = shuffle
         self.max_len = max_len
-        self.separator = separator
         # TODO: check consistency
 
     def graph_to_sequence(self, G):
@@ -43,8 +73,8 @@ class Pallete:
 
         for idd in list_ids:
             edit_op = self.edit_operations[idd]
-            re = edit_op.removeEdit(G)
-            if re != None:
+            re = edit_op.remove_edit(G)
+            if re is not None:
                 re_new = nx.MultiDiGraph(re[0])
                 for n in re_new:
                     if 'ids' in re_new.nodes[n]:
@@ -57,3 +87,32 @@ class Pallete:
 
     def get_special_nodes(self, idd):
         return self.edit_operations[idd].ids
+
+    def remove_out_of_scope(self, G):
+        G_new = nx.MultiDiGraph(G)
+
+        edges_delete = []
+        for n in G_new:
+            for m in G_new[n]:
+                for e in G_new[n][m]:
+                    ty = G_new[n][m][e]['type']
+                    if ty not in self.dic_edges:
+                        edges_delete.append((n, m, e))
+        for a, b, e in edges_delete:
+            G_new.remove_edge(a, b, e)
+
+        nodes_delete = []
+        for n in G_new:
+            if G_new.nodes[n]['type'] not in self.dic_nodes:
+                nodes_delete.append(n)
+        for n in nodes_delete:
+            G_new.remove_node(n)
+
+        #relabel
+        new_map = {}
+        j = 0
+        for n in G_new:
+            new_map[n] = j
+            j = j + 1
+        G_new = nx.relabel_nodes(G_new, new_map)
+        return G_new
