@@ -3,6 +3,7 @@ fonttools==4.33.3
 kiwisolver==1.4.2
 lxml==4.8.0
 matplotlib==3.5.2
+multiset==2.1.1
 networkx==2.8.2
 numpy==1.22.4
 ordered-set==4.1.0

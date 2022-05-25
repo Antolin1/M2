@@ -2,6 +2,8 @@ import networkx as nx
 from pyecore.ecore import EReference, EClass
 from pyecore.resources import ResourceSet, URI
 
+from m2_generator.edit_operation.edit_operation import EditOperation
+
 
 def get_source_target(reference, classes):
     source = reference.eContainingClass
@@ -17,33 +19,31 @@ def get_source_target(reference, classes):
 
 def generate_atomic_first_type(reference, classes):
     """
-    It obtains the atomic patterns associated to the containment reference. One pattern for each different target.
+    It obtains the atomic edit operations of the first type.
     :param reference: Containment reference
     :param classes: List of meta-classes of the meta-model
-    :return: List of patterns
+    :return: List of edit operations
     """
     # TODO: containment to the same meta-class
     sources, targets = get_source_target(reference, classes)
-    patterns = []
+    edit_operations = []
     for c in targets:
         pattern = nx.MultiDiGraph()
         pattern.add_node(0, type=[s.name for s in sources], ids={0})
         pattern.add_node(1, type=c.name)
         pattern.add_edge(0, 1, type=reference.name)
-        patterns.append(pattern)
-        print(f'Add first type {c.name}')
-    return patterns
+        edit_operation = EditOperation([pattern], ids=[0], name=f'Add {c.name}')
+        edit_operations.append(edit_operation)
+    return edit_operations
 
 
 def generate_atomic_second_type(reference, classes):
     """
-    It obtains the atomic patterns associated to the non-containment references.
-    One or two patterns depending on the intersection.
+    It obtains the atomic edit operation of the first type.
     :param reference: Containment reference
     :param classes: List of meta-classes of the meta-model
-    :return: List of patterns
+    :return: an edit operation
     """
-    print(f'Add second type {reference.name}')
     sources, targets = get_source_target(reference, classes)
     patterns = []
     pattern = nx.MultiDiGraph()
@@ -57,7 +57,7 @@ def generate_atomic_second_type(reference, classes):
         pattern_it.add_node(0, type=[s.name for s in intersection], ids={0, 1})
         pattern_it.add_edge(0, 1, type=reference.name)
         pattern.append(pattern_it)
-    return patterns
+    return [EditOperation(patterns, ids=[0, 1], name=f'Add {reference.name}')]
 
 
 def get_edit_operations(path_metamodel):
@@ -74,19 +74,15 @@ def get_edit_operations(path_metamodel):
     classes = [c for c in list_elements if isinstance(c, EClass)]
 
     visited = []
-    all_patterns = []
+    edit_operations = []
     for r in ereferences:
+        edit_ops = []
         if r.containment:
-            patterns = generate_atomic_first_type(r, classes)
-            all_patterns.append(patterns)
-            print('First type', len(patterns))
+            edit_ops = generate_atomic_first_type(r, classes)
         elif r.eOpposite and not r.eOpposite.containment and r.eOpposite.name not in visited:
-            patterns = generate_atomic_second_type(r, classes)
-            all_patterns.append(patterns)
-            print('Second type', len(patterns))
+            edit_ops = generate_atomic_second_type(r, classes)
         elif not r.eOpposite:
-            patterns = generate_atomic_second_type(r, classes)
-            all_patterns.append(patterns)
-            print('Second type', len(patterns))
+            edit_ops = generate_atomic_second_type(r, classes)
         visited.append(r.name)
-    return all_patterns
+        edit_operations += edit_ops
+    return edit_operations
