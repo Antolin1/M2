@@ -21,7 +21,7 @@ def plot_graph(title, graph):
     plt.show()
 
 
-class TestGeneration(unittest.TestCase):
+class TestEditOperation(unittest.TestCase):
     def test_generation_yakindu(self):
         edit_operations = get_edit_operations(path_metamodel)
         print(f'There are {len(edit_operations)} edit operations in Yakindu')
