@@ -5,6 +5,8 @@ from networkx.algorithms.isomorphism import is_isomorphic
 
 from m2_generator.edit_operation.edit_operation import edge_match
 
+SEP_INV = '_inv'
+
 
 def node_match(n1, n2):
     return n1['type'] == n2['type']
@@ -41,7 +43,26 @@ def compute_dic_edges(edit_operations, initial_graphs):
         for _, _, d in graph.edges(data=True):
             set_edges.add(d['type'])
     edges = list(set_edges)
+    edges += [e + SEP_INV for e in edges]
     return {y: x for x, y in enumerate(edges)}
+
+
+def add_inv_edges(G):
+    G_new = nx.MultiDiGraph(G)
+    for e in list(G.edges.data()):
+        G_new.add_edge(e[1], e[0], type=e[2]['type'] + SEP_INV)
+    return G_new
+
+
+def remove_inv_edges(G):
+    G_new = nx.MultiDiGraph(G)
+    remove = []
+    for e in G.edges:
+        if G[e[0]][e[1]][e[2]]['type'].endswith(SEP_INV):
+            remove.append((e[0], e[1], e[2]))
+    for s, t, k in remove:
+        G_new.remove_edge(s, t, k)
+    return G_new
 
 
 class Pallete:
@@ -49,14 +70,13 @@ class Pallete:
     # dic_nodes: {x:y} x is str and y is id (same to dic_edges)
     def __init__(self, edit_operations,
                  initial_graphs,
-                 max_len=2,
                  shuffle=False):
         self.edit_operations = edit_operations
         self.initial_graphs = initial_graphs
         self.dic_nodes = compute_dic_nodes(edit_operations, initial_graphs)
         self.dic_edges = compute_dic_edges(edit_operations, initial_graphs)
         self.shuffle = shuffle
-        self.max_len = max_len
+        self.max_len = max([len(e.ids) for e in edit_operations])
         # TODO: check consistency
 
     def graph_to_sequence(self, G):
@@ -108,7 +128,7 @@ class Pallete:
         for n in nodes_delete:
             G_new.remove_node(n)
 
-        #relabel
+        # relabel
         new_map = {}
         j = 0
         for n in G_new:
