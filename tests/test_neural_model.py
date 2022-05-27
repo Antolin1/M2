@@ -31,7 +31,7 @@ def get_complex_add_transition_edit_operation():
     pattern_ati.add_node(1, type='Transition')
     pattern_ati.add_edge(0, 1, type='outgoingTransitions')
     pattern_ati.add_edge(0, 1, type='incomingTransitions')
-    #useless edges, they must be deleted by the algorithm
+    # useless edges, they must be deleted by the algorithm
     pattern_ati.add_edge(1, 0, type='source')
     pattern_ati.add_edge(1, 0, type='target')
 
@@ -124,7 +124,7 @@ class TestNeuralModel(unittest.TestCase):
 
         samples = [sample_graph(pallete.initial_graphs[0], pallete, model, 50, debug=False) for i in range(100)]
         iso = [s for s in samples if is_isomorphic(s, G_new, node_match, edge_match)]
-        print(f'Proportion isomorphic {len(iso)/len(samples)}')
+        print(f'Proportion isomorphic {len(iso) / len(samples)}')
 
 
 if __name__ == '__main__':

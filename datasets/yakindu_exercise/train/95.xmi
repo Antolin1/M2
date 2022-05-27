@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ASCII"?>
+<hu.bme.mit.inf.yakindumm:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hu.bme.mit.inf.yakindumm="hu.bme.mit.inf.yakindumm">
+  <regions>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Entry">
+      <outgoingTransitions target="//@regions.0/@vertices.1"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:State" incomingTransitions="//@regions.0/@vertices.23/@outgoingTransitions.0 //@regions.0/@vertices.17/@outgoingTransitions.3 //@regions.0/@vertices.18/@outgoingTransitions.3 //@regions.0/@vertices.0/@outgoingTransitions.0 //@regions.0/@vertices.14/@outgoingTransitions.2 //@regions.0/@vertices.15/@outgoingTransitions.2">
+      <outgoingTransitions target="//@regions.0/@vertices.16"/>
+      <outgoingTransitions target="//@regions.0/@vertices.2"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:State" incomingTransitions="//@regions.0/@vertices.4/@outgoingTransitions.0 //@regions.0/@vertices.1/@outgoingTransitions.1 //@regions.0/@vertices.3/@outgoingTransitions.1 //@regions.0/@vertices.2/@outgoingTransitions.2 //@regions.0/@vertices.4/@outgoingTransitions.1 //@regions.0/@vertices.3/@outgoingTransitions.0">
+      <outgoingTransitions target="//@regions.0/@vertices.4"/>
+      <outgoingTransitions target="//@regions.0/@vertices.3"/>
+      <outgoingTransitions target="//@regions.0/@vertices.2"/>
+      <outgoingTransitions target="//@regions.0/@vertices.5"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.2/@outgoingTransitions.1">
+      <outgoingTransitions target="//@regions.0/@vertices.2"/>
+      <outgoingTransitions target="//@regions.0/@vertices.2"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.2/@outgoingTransitions.0">
+      <outgoingTransitions target="//@regions.0/@vertices.2"/>
+      <outgoingTransitions target="//@regions.0/@vertices.2"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:State" incomingTransitions="//@regions.0/@vertices.6/@outgoingTransitions.0 //@regions.0/@vertices.5/@outgoingTransitions.2 //@regions.0/@vertices.7/@outgoingTransitions.1 //@regions.0/@vertices.7/@outgoingTransitions.0 //@regions.0/@vertices.2/@outgoingTransitions.3 //@regions.0/@vertices.6/@outgoingTransitions.1">
+      <outgoingTransitions target="//@regions.0/@vertices.7"/>
+      <outgoingTransitions target="//@regions.0/@vertices.6"/>
+      <outgoingTransitions target="//@regions.0/@vertices.5"/>
+      <outgoingTransitions target="//@regions.0/@vertices.8"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.5/@outgoingTransitions.1">
+      <outgoingTransitions target="//@regions.0/@vertices.5"/>
+      <outgoingTransitions target="//@regions.0/@vertices.5"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.5/@outgoingTransitions.0">
+      <outgoingTransitions target="//@regions.0/@vertices.5"/>
+      <outgoingTransitions target="//@regions.0/@vertices.5"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:State" incomingTransitions="//@regions.0/@vertices.10/@outgoingTransitions.0 //@regions.0/@vertices.9/@outgoingTransitions.1 //@regions.0/@vertices.9/@outgoingTransitions.0 //@regions.0/@vertices.10/@outgoingTransitions.1 //@regions.0/@vertices.8/@outgoingTransitions.3 //@regions.0/@vertices.5/@outgoingTransitions.3">
+      <outgoingTransitions target="//@regions.0/@vertices.10"/>
+      <outgoingTransitions target="//@regions.0/@vertices.11"/>
+      <outgoingTransitions target="//@regions.0/@vertices.9"/>
+      <outgoingTransitions target="//@regions.0/@vertices.8"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.8/@outgoingTransitions.2">
+      <outgoingTransitions target="//@regions.0/@vertices.8"/>
+      <outgoingTransitions target="//@regions.0/@vertices.8"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.8/@outgoingTransitions.0">
+      <outgoingTransitions target="//@regions.0/@vertices.8"/>
+      <outgoingTransitions target="//@regions.0/@vertices.8"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:State" incomingTransitions="//@regions.0/@vertices.13/@outgoingTransitions.0 //@regions.0/@vertices.8/@outgoingTransitions.1 //@regions.0/@vertices.12/@outgoingTransitions.0 //@regions.0/@vertices.12/@outgoingTransitions.1 //@regions.0/@vertices.13/@outgoingTransitions.1 //@regions.0/@vertices.11/@outgoingTransitions.2">
+      <outgoingTransitions target="//@regions.0/@vertices.12"/>
+      <outgoingTransitions target="//@regions.0/@vertices.13"/>
+      <outgoingTransitions target="//@regions.0/@vertices.11"/>
+      <outgoingTransitions target="//@regions.0/@vertices.14"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.11/@outgoingTransitions.0">
+      <outgoingTransitions target="//@regions.0/@vertices.11"/>
+      <outgoingTransitions target="//@regions.0/@vertices.11"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.11/@outgoingTransitions.1">
+      <outgoingTransitions target="//@regions.0/@vertices.11"/>
+      <outgoingTransitions target="//@regions.0/@vertices.11"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:State" incomingTransitions="//@regions.0/@vertices.14/@outgoingTransitions.1 //@regions.0/@vertices.11/@outgoingTransitions.3 //@regions.0/@vertices.15/@outgoingTransitions.1">
+      <outgoingTransitions target="//@regions.0/@vertices.15"/>
+      <outgoingTransitions target="//@regions.0/@vertices.14"/>
+      <outgoingTransitions target="//@regions.0/@vertices.1"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:State" incomingTransitions="//@regions.0/@vertices.15/@outgoingTransitions.0 //@regions.0/@vertices.14/@outgoingTransitions.0">
+      <outgoingTransitions target="//@regions.0/@vertices.15"/>
+      <outgoingTransitions target="//@regions.0/@vertices.14"/>
+      <outgoingTransitions target="//@regions.0/@vertices.1"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.1/@outgoingTransitions.0">
+      <outgoingTransitions target="//@regions.0/@vertices.18"/>
+      <outgoingTransitions target="//@regions.0/@vertices.17"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:State" incomingTransitions="//@regions.0/@vertices.16/@outgoingTransitions.1 //@regions.0/@vertices.20/@outgoingTransitions.0 //@regions.0/@vertices.22/@outgoingTransitions.1 //@regions.0/@vertices.22/@outgoingTransitions.0">
+      <outgoingTransitions target="//@regions.0/@vertices.21"/>
+      <outgoingTransitions target="//@regions.0/@vertices.22"/>
+      <outgoingTransitions target="//@regions.0/@vertices.23"/>
+      <outgoingTransitions target="//@regions.0/@vertices.1"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:State" incomingTransitions="//@regions.0/@vertices.16/@outgoingTransitions.0 //@regions.0/@vertices.20/@outgoingTransitions.1 //@regions.0/@vertices.24/@outgoingTransitions.1 //@regions.0/@vertices.24/@outgoingTransitions.2">
+      <outgoingTransitions target="//@regions.0/@vertices.19"/>
+      <outgoingTransitions target="//@regions.0/@vertices.24"/>
+      <outgoingTransitions target="//@regions.0/@vertices.23"/>
+      <outgoingTransitions target="//@regions.0/@vertices.1"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.18/@outgoingTransitions.0">
+      <outgoingTransitions target="//@regions.0/@vertices.20"/>
+      <outgoingTransitions target="//@regions.0/@vertices.20"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.21/@outgoingTransitions.0 //@regions.0/@vertices.19/@outgoingTransitions.0 //@regions.0/@vertices.19/@outgoingTransitions.1 //@regions.0/@vertices.21/@outgoingTransitions.1">
+      <outgoingTransitions target="//@regions.0/@vertices.17"/>
+      <outgoingTransitions target="//@regions.0/@vertices.18"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.17/@outgoingTransitions.0">
+      <outgoingTransitions target="//@regions.0/@vertices.20"/>
+      <outgoingTransitions target="//@regions.0/@vertices.20"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.17/@outgoingTransitions.1">
+      <outgoingTransitions target="//@regions.0/@vertices.17"/>
+      <outgoingTransitions target="//@regions.0/@vertices.17"/>
+      <outgoingTransitions target="//@regions.0/@vertices.23"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:State" incomingTransitions="//@regions.0/@vertices.24/@outgoingTransitions.0 //@regions.0/@vertices.18/@outgoingTransitions.2 //@regions.0/@vertices.22/@outgoingTransitions.2 //@regions.0/@vertices.17/@outgoingTransitions.2">
+      <outgoingTransitions target="//@regions.0/@vertices.1"/>
+    </vertices>
+    <vertices xsi:type="hu.bme.mit.inf.yakindumm:Choice" incomingTransitions="//@regions.0/@vertices.18/@outgoingTransitions.1">
+      <outgoingTransitions target="//@regions.0/@vertices.23"/>
+      <outgoingTransitions target="//@regions.0/@vertices.18"/>
+      <outgoingTransitions target="//@regions.0/@vertices.18"/>
+    </vertices>
+  </regions>
+</hu.bme.mit.inf.yakindumm:Statechart>
