@@ -31,6 +31,9 @@ def get_complex_add_transition_edit_operation():
     pattern_ati.add_node(1, type='Transition')
     pattern_ati.add_edge(0, 1, type='outgoingTransitions')
     pattern_ati.add_edge(0, 1, type='incomingTransitions')
+    #useless edges, they must be deleted by the algorithm
+    pattern_ati.add_edge(1, 0, type='source')
+    pattern_ati.add_edge(1, 0, type='target')
 
     pattern_at = nx.MultiDiGraph()
     pattern_at.add_node(0, type=['State', 'Choice', 'Exit', 'FinalState',
@@ -40,6 +43,8 @@ def get_complex_add_transition_edit_operation():
                                  'Synchronization', 'Entry'], ids={1})
     pattern_at.add_edge(0, 1, type='outgoingTransitions')
     pattern_at.add_edge(2, 1, type='incomingTransitions')
+    pattern_at.add_edge(1, 0, type='source')
+    pattern_at.add_edge(1, 2, type='target')
 
     patterns = [pattern_at, pattern_ati]
 
@@ -59,9 +64,7 @@ def get_complex_add_region_with_entry_operation():
 class TestNeuralModel(unittest.TestCase):
     def test_training(self):
         model = get_graph_from_model(path_model, [path_metamodel])
-        initial_graph = nx.MultiDiGraph()
-        initial_graph.add_node(0, type='Statechart')
-        pallete = Pallete(path_metamodel, [initial_graph])
+        pallete = Pallete(path_metamodel, 'Statechart')
 
         print('Edit ops before')
         for e in pallete.edit_operations:
@@ -112,14 +115,14 @@ class TestNeuralModel(unittest.TestCase):
             print(f'Epoch {e} loss {round(total_loss, 4)}')
 
         model.eval()
-        samples = [sample_graph(initial_graph, pallete, model, 50, debug=False) for i in range(5)]
+        samples = [sample_graph(pallete.initial_graphs[0], pallete, model, 50, debug=False) for i in range(5)]
         for j, s in enumerate(samples):
             print(len(s), len(G_new))
             print(len(s.edges), len(G_new.edges))
             print(is_isomorphic(s, G_new, node_match, edge_match))
             plot_graph(f'sample {j}', s)
 
-        samples = [sample_graph(initial_graph, pallete, model, 50, debug=False) for i in range(100)]
+        samples = [sample_graph(pallete.initial_graphs[0], pallete, model, 50, debug=False) for i in range(100)]
         iso = [s for s in samples if is_isomorphic(s, G_new, node_match, edge_match)]
         print(f'Proportion isomorphic {len(iso)/len(samples)}')
 

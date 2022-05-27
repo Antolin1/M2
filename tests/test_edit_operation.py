@@ -31,9 +31,7 @@ class TestEditOperation(unittest.TestCase):
 
     def test_pallete(self):
         model = get_graph_from_model(path_model, [path_metamodel])
-        initial_graph = nx.MultiDiGraph()
-        initial_graph.add_node(0, type='Statechart')
-        pallete = Pallete(path_metamodel, [initial_graph])
+        pallete = Pallete(path_metamodel, 'Statechart')
 
         G_new = pallete.remove_out_of_scope(model)
 

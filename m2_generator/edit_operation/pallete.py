@@ -79,19 +79,26 @@ def remove_inv_edges(G):
     return G_new
 
 
+def get_initial_graph(root_element):
+    initial_graph = nx.MultiDiGraph()
+    initial_graph.add_node(0, type=root_element)
+    return initial_graph
+
+
 class Pallete:
     # editOperations: {x:y} x is id and y is object edit op
     # dic_nodes: {x:y} x is str and y is id (same to dic_edges)
 
-    def __init__(self, path_metamodel, initial_graphs):
+    def __init__(self, path_metamodel, root_element):
+        self.root_element = root_element
         self.path_metamodel = path_metamodel
         self.atomic_edit_operations = get_edit_operations(path_metamodel)
-        self.initial_graphs = initial_graphs
+        self.initial_graphs = [get_initial_graph(root_element)]
         self.complex_edit_operations = []
-        self.dic_nodes = compute_dic_nodes(self.atomic_edit_operations, initial_graphs)
-        self.dic_edges = compute_dic_edges(self.atomic_edit_operations, initial_graphs)
-        self.max_len = max([len(e.ids) for e in self.atomic_edit_operations])
+        self.dic_nodes = compute_dic_nodes(self.atomic_edit_operations, self.initial_graphs)
+        self.dic_edges = compute_dic_edges(self.atomic_edit_operations, self.initial_graphs)
         self.edit_operations = self.complex_edit_operations + self.atomic_edit_operations
+        self.max_len = max([len(e.ids) for e in self.edit_operations])
 
     def graph_to_sequence(self, G):
         list_ids = list(range(0, len(self.edit_operations)))
@@ -171,3 +178,4 @@ class Pallete:
         self.complex_edit_operations.append(edit_operation)
         self.reorder_atomic_edit_operations(edit_operation)
         self.edit_operations = self.complex_edit_operations + self.atomic_edit_operations
+        self.max_len = max([len(e.ids) for e in self.edit_operations])
