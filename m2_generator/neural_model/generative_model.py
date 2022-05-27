@@ -28,7 +28,7 @@ def sample_graph(G_0, pallete, model, max_size, debug=False, debug_trials=False,
             batch)
         if debug:
             print('Step', step)
-            print('Action', sampled_action.item())
+            print('Action', pallete.edit_operations[sampled_action.item()].name)
             print('Is last', isLast.item() == 1)
 
         if isLast.item() == 1:

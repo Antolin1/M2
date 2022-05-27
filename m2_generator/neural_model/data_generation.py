@@ -2,6 +2,8 @@ import networkx as nx
 import torch
 from torch_geometric.data import Data
 
+from m2_generator.edit_operation.pallete import SPECIAL
+
 
 def generate_tensors_from_graph(G, pallete, len_seq):
     node_types = []
@@ -31,7 +33,9 @@ def generate_tensors_from_graph(G, pallete, len_seq):
         edges.append([source, target])
         lab = pallete.dic_edges[lab]
         edges_lab.append(lab)
-
+    if len(G) == 1 and edges == []:
+        edges.append([0, 0])
+        edges_lab.append(pallete.dic_edges[SPECIAL])
     return (torch.tensor(node_types),
             torch.tensor(special_nodes),
             torch.tensor(special_nodes_masked),
