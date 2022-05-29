@@ -3,18 +3,22 @@ import json
 import logging
 
 import multiprocess as mp
+import networkx as nx
+import numpy as np
 import torch
 import torch.nn as nn
+from networkx.algorithms.isomorphism import is_isomorphic
 from torch_geometric.loader import DataLoader
 from tqdm import tqdm
-from networkx.algorithms.isomorphism import is_isomorphic
 
+import realism.metrics as mt
+from constraints.yakindu import inconsistent as inconsistent_yakindu
 from m2_generator.edit_operation.pallete import add_inv_edges, PalleteEncoder, edge_match
 from m2_generator.model2graph.model2graph import serialize_graph_model, get_graph_from_model
 from m2_generator.neural_model.data_generation import sequence2data
 from m2_generator.neural_model.early_stopping import EarlyStopping
 from m2_generator.neural_model.generative_model import GenerativeModel, sample_graph
-from constraints.yakindu import inconsistent as inconsistent_yakindu
+from realism.emd import gaussian_emd, compute_mmd
 
 logger = logging.getLogger(__name__)
 
@@ -97,7 +101,11 @@ def node_match(n1, n2):
     return n1['type'] == n2['type']
 
 
-def evaluate(args):
+def evaluate(pallete, args):
+    with open(f'{args.model_path}/pallete.json') as f:
+        pallete.from_json(json.load(f))
+    if 'yakindu' in args.metamodel:
+        inconsistent = inconsistent_yakindu
     training_files = glob.glob(f'{args.training_dataset}/*')
     training_graphs = [get_graph_from_model(f, [args.metamodel]) for f in
                        training_files]
@@ -113,7 +121,7 @@ def evaluate(args):
                         generated_files]
     logger.info(f'Loaded a test dataset of {len(generated_graphs)} elements')
 
-    consistent_models = [not inconsistent_yakindu(g) for g in generated_graphs]
+    consistent_models = [g for g in generated_graphs if not inconsistent(g)]
     # TODO: check this, inconsistency = 0 ? I don't think so...
     logger.info(f'Proportion of consistent models {len(consistent_models) / len(generated_graphs)}')
 
@@ -125,3 +133,29 @@ def evaluate(args):
                 break
     iso_prop = len(iso) / len(generated_graphs)
     logger.info(f'Proportion of isomorphic models with respect to the training set: {iso_prop}')
+
+    logger.info('Assessing realism')
+    hist_degrees_syn = [nx.degree_histogram(G) for G in consistent_models]
+    hist_degrees_real = [nx.degree_histogram(G) for G in test_graphs]
+    # MMD degree
+    mmd_dist_degree = compute_mmd(hist_degrees_real, hist_degrees_syn, kernel=gaussian_emd)
+    logger.info(f'Degree MMD: {mmd_dist_degree}')
+
+    dims = list(pallete.dic_edges.keys())
+    hist_mpc_syn = [np.histogram(list(mt.mpc(G, dims).values()), bins=100, range=(0.0, 1.0), density=False)[0]
+                    for G in consistent_models]
+    hist_mpc_real = [np.histogram(list(mt.mpc(G, dims).values()), bins=100, range=(0.0, 1.0), density=False)[0]
+                     for G in test_graphs]
+    # MMD MPC
+    mmd_dist_mpc = compute_mmd(hist_mpc_real, hist_mpc_syn, kernel=gaussian_emd,
+                               sigma=1.0 / 10, distance_scaling=100)
+    logger.info(f'Degree MPC: {mmd_dist_mpc}')
+
+    hist_na_syn = [np.histogram(list(mt.node_activity(G, dims)), bins=100, range=(0.0, 1.0), density=False)[0]
+                   for G in consistent_models]
+    hist_na_real = [np.histogram(list(mt.node_activity(G, dims)), bins=100, range=(0.0, 1.0), density=False)[0]
+                    for G in test_graphs]
+    # MMD NNA
+    mmd_dist_na = compute_mmd(hist_na_real, hist_na_syn, kernel=gaussian_emd,
+                              sigma=1.0 / 10, distance_scaling=100)
+    logger.info(f'Degree NNA: {mmd_dist_na}')

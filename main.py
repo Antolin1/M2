@@ -1,5 +1,6 @@
 import glob
 import logging
+import os
 import random
 from argparse import ArgumentParser
 
@@ -10,7 +11,7 @@ from prettytable import PrettyTable
 from m2_generator.edit_operation.pallete import Pallete
 from m2_generator.model2graph.model2graph import get_graph_from_model
 from m2_generator.neural_model.training_generation_evaluation import train_generator, generation, evaluate
-from tests.test_neural_model import get_complex_add_transition_edit_operation
+from tests.test_neural_model import get_complex_add_transition_edit_operation, get_complex_add_region_with_entry_operation
 
 logger = logging.getLogger(__name__)
 
@@ -26,9 +27,9 @@ def main(args):
     elif args.inference:
         generation(pallete, args)
     elif args.evaluate:
-        evaluate(args)
+        evaluate(pallete, args)
     else:
-        raise ValueError('--train or --inference should be provided.')
+        raise ValueError('--train, --inference, or --evaluate should be provided.')
 
 
 def seed_everything(seed):
@@ -42,8 +43,10 @@ def seed_everything(seed):
 def get_pallete(args):
     pallete = Pallete(path_metamodel=args.metamodel, root_element=args.root_object)
     if 'yakindu' in args.metamodel:
-        ed = get_complex_add_transition_edit_operation()
-        pallete.add_complex_edit_operation(ed)
+        ed1 = get_complex_add_transition_edit_operation()
+        ed2 = get_complex_add_region_with_entry_operation()
+        pallete.add_complex_edit_operation(ed1)
+        pallete.add_complex_edit_operation(ed2)
     return pallete
 
 
@@ -58,11 +61,11 @@ if __name__ == '__main__':
     parser.add_argument('--seed', help='seed.', type=int, default=123)
     parser.add_argument('--hidden_dim', help='Hidden dimension of the neural model.', type=int, default=64)
     parser.add_argument('--k', help='Montecarlo iterations.', type=int, default=10)
-    parser.add_argument('--epochs', type=int, default=50)
+    parser.add_argument('--epochs', type=int, default=25)
     parser.add_argument('--lr', default=0.001)
-    parser.add_argument('--batch_size', default=128)
+    parser.add_argument('--batch_size', default=128, type=int)
     parser.add_argument('--model_path', default='models/yakindu_exercise')
-    parser.add_argument('--patience', default=10)
+    parser.add_argument('--patience', default=10, type=int)
     parser.add_argument('--pool', help='Number of processes for the montecarlo decomposition', type=int, default=12)
     parser.add_argument('--max_size', help='Maximum size of the generated models', type=int, default=150)
     parser.add_argument('--n_samples', help='Number of samples to generate', type=int, default=500)
@@ -83,6 +86,12 @@ if __name__ == '__main__':
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
     console.setFormatter(formatter)
     logger.addHandler(console)
+
+    file = logging.FileHandler(os.path.join(args.model_path, 'info.log'))
+    file.setLevel(level=logging.INFO)
+    formatter = logging.Formatter('[%(asctime)s | %(filename)s | line %(lineno)d] - %(levelname)s: %(message)s')
+    file.setFormatter(formatter)
+    logger.addHandler(file)
 
     config_table = PrettyTable()
     config_table.field_names = ["Configuration", "Value"]

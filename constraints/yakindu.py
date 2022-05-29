@@ -74,7 +74,8 @@ def entry_out_tran(G):
 def exit_final(G):
     for n in G.nodes():
         if (G.nodes[n]['type'] == 'Exit' or
-            G.nodes[n]['type'] == 'Final') and (number_outgoing_transitions(G, n) > 0):
+            G.nodes[n]['type'] == 'Final') and \
+                (number_outgoing_transitions(G, n) > 0):
             return True
     return False
 
