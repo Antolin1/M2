@@ -8,13 +8,14 @@ from networkx.algorithms.isomorphism import DiGraphMatcher
 
 
 def edge_match(e1, e2):
+    #TODO: check this, == or subset????
     t1 = []
     t2 = []
     for e in e1:
         t1.append(e1[e]['type'])
     for e in e2:
         t2.append(e2[e]['type'])
-    return Multiset(t1) == Multiset(t2)
+    return Multiset(t2) == Multiset(t1)
 
 
 def node_match(n1, n2):

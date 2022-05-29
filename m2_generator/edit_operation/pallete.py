@@ -1,3 +1,5 @@
+import json
+
 import networkx as nx
 from networkx.algorithms.isomorphism import is_isomorphic, DiGraphMatcher
 
@@ -99,6 +101,7 @@ class Pallete:
         self.dic_edges = compute_dic_edges(self.atomic_edit_operations, self.initial_graphs)
         self.edit_operations = self.complex_edit_operations + self.atomic_edit_operations
         self.max_len = max([len(e.ids) for e in self.edit_operations])
+        assert len([e.name for e in self.edit_operations]) == len(set([e.name for e in self.edit_operations]))
 
     def graph_to_sequence(self, G):
         list_ids = list(range(0, len(self.edit_operations)))
@@ -179,3 +182,43 @@ class Pallete:
         self.reorder_atomic_edit_operations(edit_operation)
         self.edit_operations = self.complex_edit_operations + self.atomic_edit_operations
         self.max_len = max([len(e.ids) for e in self.edit_operations])
+        assert len([e.name for e in self.edit_operations]) == len(set([e.name for e in self.edit_operations]))
+
+    def from_json(self, dic):
+        self.root_element = dic['root_element']
+        self.path_metamodel = dic['path_metamodel']
+        self.dic_nodes = dic['dic_nodes']
+        self.dic_edges = dic['dic_edges']
+        self.max_len = dic['max_len']
+        self.initial_graphs = [get_initial_graph(self.root_element)]
+        new_atomic = []
+        for name in dic['atomic_edit_operations']:
+            for e in self.atomic_edit_operations:
+                if e.name == name:
+                    new_atomic.append(e)
+        self.atomic_edit_operations = new_atomic
+        new_complex = []
+        for name in dic['complex_edit_operations']:
+            for e in self.complex_edit_operations:
+                if e.name == name:
+                    new_complex.append(e)
+        self.complex_edit_operations = new_complex
+        new_edit = []
+        for name in dic['edit_operations']:
+            for e in self.edit_operations:
+                if e.name == name:
+                    new_edit.append(e)
+        self.edit_operations = new_edit
+
+
+class PalleteEncoder(json.JSONEncoder):
+    def default(self, o):
+        result = {'root_element': o.root_element,
+                  'path_metamodel': o.path_metamodel,
+                  'atomic_edit_operations': [e.name for e in o.atomic_edit_operations],
+                  'complex_edit_operations': [e.name for e in o.complex_edit_operations],
+                  'dic_nodes': o.dic_nodes,
+                  'dic_edges': o.dic_edges,
+                  'edit_operations': [e.name for e in o.edit_operations],
+                  'max_len': o.max_len}
+        return result

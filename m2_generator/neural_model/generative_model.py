@@ -1,7 +1,7 @@
 import networkx as nx
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
+import torch.nn as nn
 import torch_geometric.nn as pyg_nn
 from torch.distributions.categorical import Categorical
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
@@ -28,7 +28,7 @@ def sample_graph(G_0, pallete, model, max_size, debug=False, debug_trials=False,
             batch)
         if debug:
             print('Step', step)
-            print('Action', pallete.edit_operations[sampled_action.item()].name)
+            print('Action', sampled_action.item(), pallete.edit_operations[sampled_action.item()].name)
             print('Is last', isLast.item() == 1)
 
         if isLast.item() == 1:
@@ -123,12 +123,12 @@ class GenerativeModel(nn.Module):
         else:
             h_G = pyg_nn.global_mean_pool(nodeEmbeddings, bs)
         # infer action
-        action = F.relu(self.linAction(h_G))
+        action = torch.relu(self.linAction(h_G))
         action = self.linAction_final(action)
         m = Categorical(F.softmax(torch.squeeze(action)))
         # infer finished
-        final = F.relu(self.finishedLin(h_G))
-        final = F.sigmoid(self.finishedFinal(final))
+        final = torch.relu(self.finishedLin(h_G))
+        final = torch.sigmoid(self.finishedFinal(final))
         isLast = torch.bernoulli(final)
         return m.sample(), isLast, h_G, nodeEmbeddings
 
@@ -165,7 +165,7 @@ class GenerativeModel(nn.Module):
                                        dim=1).repeat(1, out_gru.shape[1], 1)
 
         concats = torch.cat((out_gru, nodeEmb_unsq), dim=2)
-        concats = F.relu(self.linNodes(concats))
+        concats = torch.relu(self.linNodes(concats))
 
         # nxlx1
         nodes_final = torch.squeeze(self.linNodes_final(concats), dim=2)
@@ -205,12 +205,12 @@ class GenerativeModel(nn.Module):
         assert h_G.shape[1] == H
 
         # infer action
-        action = F.relu(self.linAction(h_G))
+        action = torch.relu(self.linAction(h_G))
         action = self.linAction_final(action)
 
         # infer finished
-        final = F.relu(self.finishedLin(h_G))
-        final = F.sigmoid(self.finishedFinal(final))
+        final = torch.relu(self.finishedLin(h_G))
+        final = torch.sigmoid(self.finishedFinal(final))
 
         # emulate SOS token, the sos token must be the action
         # action input: bxh
@@ -269,7 +269,7 @@ class GenerativeModel(nn.Module):
         assert concats.shape[1] == L
         assert concats.shape[2] == (2 * H)
 
-        concats = F.relu(self.linNodes(concats))
+        concats = torch.relu(self.linNodes(concats))
         assert concats.shape[2] == H
 
         # nxlx1

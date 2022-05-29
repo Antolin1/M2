@@ -5,7 +5,7 @@ import networkx as nx
 import numpy as np
 import torch
 from networkx.algorithms.isomorphism import is_isomorphic
-from torch_geometric.data import DataLoader
+from torch_geometric.loader import DataLoader
 
 from m2_generator.edit_operation.edit_operation import edge_match, EditOperation
 from m2_generator.edit_operation.pallete import Pallete, add_inv_edges
@@ -112,7 +112,7 @@ class TestNeuralModel(unittest.TestCase):
                 total_loss += loss.item()
                 loss.backward()
                 opt.step()
-            print(f'Epoch {e} loss {round(total_loss, 4)}')
+            print(f'Epoch {e} loss {round(total_loss/len(loader), 4)}')
 
         model.eval()
         samples = [sample_graph(pallete.initial_graphs[0], pallete, model, 50, debug=False) for i in range(5)]
