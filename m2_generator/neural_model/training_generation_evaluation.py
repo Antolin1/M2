@@ -13,6 +13,7 @@ from tqdm import tqdm
 
 import realism.metrics as mt
 from constraints.yakindu import inconsistent as inconsistent_yakindu
+from constraints.ecore import inconsistent as inconsistent_ecore
 from m2_generator.edit_operation.pallete import add_inv_edges, PalleteEncoder, edge_match
 from m2_generator.model2graph.model2graph import serialize_graph_model, get_graph_from_model
 from m2_generator.neural_model.data_generation import sequence2data
@@ -106,6 +107,8 @@ def evaluate(pallete, args):
         pallete.from_json(json.load(f))
     if 'yakindu' in args.metamodel:
         inconsistent = inconsistent_yakindu
+    elif 'ecore' in args.metamodel:
+        inconsistent = inconsistent_ecore
     training_files = glob.glob(f'{args.training_dataset}/*')
     training_graphs = [get_graph_from_model(f, [args.metamodel]) for f in
                        training_files]
