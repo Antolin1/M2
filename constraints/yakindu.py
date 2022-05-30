@@ -103,7 +103,18 @@ def choice(G):
     return False
 
 
+def no_outgoing_meta_model_constraint(G, t):
+    return G.in_degree(t) != 2
+
+
+def meta_model_constraint(G):
+    for n in G:
+        if G.nodes[n]['type'] == 'Transition' and no_outgoing_meta_model_constraint(G, n):
+            return True
+    return False
+
+
 def inconsistent(G):
     return (no_entry_region(G) or multiple_entry_region(G)
             or incoming_to_entry(G) or no_state_region(G) or
-            choice(G) or exit_final(G) or entry_out_tran(G))
+            choice(G) or exit_final(G) or entry_out_tran(G) or meta_model_constraint(G))

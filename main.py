@@ -11,7 +11,8 @@ from prettytable import PrettyTable
 from m2_generator.edit_operation.pallete import Pallete
 from m2_generator.model2graph.model2graph import get_graph_from_model
 from m2_generator.neural_model.training_generation_evaluation import train_generator, generation, evaluate
-from tests.test_neural_model import get_complex_add_transition_edit_operation, get_complex_add_region_with_entry_operation
+from tests.test_neural_model import get_complex_add_transition_edit_operation, \
+    get_complex_add_region_with_entry_operation
 
 logger = logging.getLogger(__name__)
 
@@ -42,11 +43,12 @@ def seed_everything(seed):
 
 def get_pallete(args):
     pallete = Pallete(path_metamodel=args.metamodel, root_element=args.root_object)
-    if 'yakindu' in args.metamodel:
-        ed1 = get_complex_add_transition_edit_operation()
-        ed2 = get_complex_add_region_with_entry_operation()
-        pallete.add_complex_edit_operation(ed1)
-        pallete.add_complex_edit_operation(ed2)
+    if args.complex_edit_operations:
+        if 'yakindu' in args.metamodel.lower():
+            ed1 = get_complex_add_transition_edit_operation()
+            ed2 = get_complex_add_region_with_entry_operation()
+            pallete.add_complex_edit_operation(ed1)
+            pallete.add_complex_edit_operation(ed2)
     return pallete
 
 
@@ -71,6 +73,7 @@ if __name__ == '__main__':
     parser.add_argument('--n_samples', help='Number of samples to generate', type=int, default=500)
     parser.add_argument('--output_path', help='Output folder where the models will be generated',
                         default='generated_models/yakindu_exercise')
+    parser.add_argument('--complex_edit_operations', help='If complex edit operations are considered', action='store_true')
     parser.add_argument('--train', help='If training phase', action='store_true')
     parser.add_argument('--inference', help='If inference phase', action='store_true')
     parser.add_argument('--evaluate', help='Evaluate of generated models', action='store_true')

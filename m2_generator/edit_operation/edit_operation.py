@@ -8,7 +8,7 @@ from networkx.algorithms.isomorphism import DiGraphMatcher
 
 
 def edge_match(e1, e2):
-    #TODO: check this, == or subset????
+    # TODO: check this, == or subset????
     t1 = []
     t2 = []
     for e in e1:
@@ -25,6 +25,24 @@ def node_match(n1, n2):
         return ((n1['type'] == n2['type']) and
                 n1['out'] == n2['out'] and
                 n1['in'] == n2['in'])
+
+
+def multi_to_mono_graph(g):
+    G = nx.DiGraph()
+    for n in g:
+        G.add_node(n, **g.nodes[n])
+    for s, t, d in g.edges(data=True):
+        if G.has_edge(s, t):
+            G[s][t]['type'].add(d['type'])
+        else:
+            st = set()
+            st.add(d['type'])
+            G.add_edge(s, t, type=st)
+    return G
+
+
+def edge_match_second_type(e1, e2):
+    return e2['type'] in e1['type']
 
 
 def relabel_randomly(G):
@@ -49,12 +67,16 @@ def add_in_out(G):
 # given a pattern of the edit operation and a graph. It returns a new graph
 # that corresponds to the action of removing an edit operation.
 # this graph has nodes with 'ids' indicating the border nodes.
-def remove_edit_pattern(pat, G):
+def remove_edit_pattern(pat, G, type):
     new_G = add_in_out(nx.MultiDiGraph(G))
     pat_en = add_in_out(nx.MultiDiGraph(pat))
 
-    GM = DiGraphMatcher(new_G, pat_en, node_match=node_match,
-                        edge_match=edge_match)
+    if type == 'first':
+        GM = DiGraphMatcher(new_G, pat_en, node_match=node_match,
+                            edge_match=edge_match)
+    elif type == 'second':
+        GM = DiGraphMatcher(multi_to_mono_graph(new_G), nx.DiGraph(pat_en), node_match=node_match,
+                            edge_match=edge_match_second_type)
     dics = []
     for subgraph in GM.subgraph_isomorphisms_iter():
         dics.append(subgraph)
@@ -100,10 +122,11 @@ def remove_edit_pattern(pat, G):
 
 
 class EditOperation:
-    def __init__(self, patterns, ids, name=''):
+    def __init__(self, patterns, ids, name='', type='first'):
         self.patterns = patterns
         self.ids = ids
         self.name = name
+        self.type = type
         # TODO: consistency of the patterns
 
     def can_apply(self, G) -> bool:
@@ -217,7 +240,7 @@ class EditOperation:
         pats = self.patterns.copy()
         random.shuffle(pats)
         for p in pats:
-            re = remove_edit_pattern(p, G)
+            re = remove_edit_pattern(p, G, self.type)
             if re is not None:
                 new_map = {}
                 j = 0

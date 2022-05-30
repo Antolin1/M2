@@ -3,7 +3,6 @@ import unittest
 import matplotlib.pyplot as plt
 import networkx as nx
 from multiset import Multiset
-from networkx.algorithms.isomorphism import DiGraphMatcher
 
 from m2_generator.edit_operation.edit_operation_generation import get_edit_operations
 from m2_generator.edit_operation.pallete import Pallete
@@ -47,13 +46,7 @@ def get_problematic_graphs():
     g.add_edge(1, 2, type='vertices')
     g.add_edge(2, 3, type='incomingTransitions')
     g.add_edge(2, 3, type='outgoingTransitions')
-
-    g1 = nx.MultiDiGraph()
-    g1.add_node(0, type='Transition')
-    g1.add_node(1, type='State')
-    g1.add_edge(1, 0, type='incomingTransitions')
-    g1.add_edge(1, 0, type='outgoingTransitions')  # if I remove this, it is no longer isomorphic
-    return g, g1
+    return g
 
 
 class TestEditOperation(unittest.TestCase):
@@ -78,16 +71,11 @@ class TestEditOperation(unittest.TestCase):
 
     def test_problematic_graph(self):
         pallete = Pallete(path_metamodel, 'Statechart')
-        g, g1 = get_problematic_graphs()
+        g = get_problematic_graphs()
         sequence = pallete.graph_to_sequence(g)
         print(len(sequence))
         for i, s in enumerate(sequence):
             plot_graph(f'step {i} + {pallete.edit_operations[s[1]].name}', s[0])
-
-        GM = DiGraphMatcher(g, g1, node_match=node_match,
-                            edge_match=edge_match)
-        for subgraph in GM.subgraph_isomorphisms_iter():
-            print(subgraph)
 
 
 if __name__ == '__main__':
