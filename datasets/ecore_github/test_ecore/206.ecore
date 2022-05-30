@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="linit" nsURI="http://www.Linit.linit" nsPrefix="linit">
+  <eClassifiers xsi:type="ecore:EClass" name="programa">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="d" eType="#//declaraciones"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="i" eType="#//instrucciones"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="declaraciones">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="i" eType="#//instrucciones"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="d" eType="#//declaraciones"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="instrucciones" eSuperTypes="#//ciclo">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="i" eType="#//instrucciones"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c" eType="#//condicional"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="f" upperBound="-1" eType="#//ciclo"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="condicional">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="i" eType="#//instrucciones"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="l" eType="#//listaCondicional"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ciclo"/>
+  <eClassifiers xsi:type="ecore:EClass" name="listaCondicional">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="i" eType="#//instrucciones"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="l" eType="#//listaCondicional"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

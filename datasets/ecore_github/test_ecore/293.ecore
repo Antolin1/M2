@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="metamodel" nsURI="metamodel" nsPrefix="metamodel">
+  <eClassifiers xsi:type="ecore:EClass" name="Composant">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="proprietes" upperBound="-1"
+        eType="#//Propriete" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requis" eType="#//InterfaceComposant"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fournis" eType="#//InterfaceComposant"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//Configuration"
+        eOpposite="#//Configuration/composants"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Configuration" eSuperTypes="#//Composant">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="composants" upperBound="-1"
+        eType="#//Composant" containment="true" resolveProxies="false" eOpposite="#//Composant/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requisConf" eType="#//InterfaceConfig"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fourniConf" eType="#//InterfaceConfig"
+        containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Interface" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InterfaceComposant" eSuperTypes="#//Interface">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
+        eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="servicesF" upperBound="-1"
+        eType="#//ServiceF" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="servicesR" upperBound="-1"
+        eType="#//ServiceR" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InterfaceConnecteur" eSuperTypes="#//Interface"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InterfaceConfig" eSuperTypes="#//InterfaceComposant"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Service" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portsR" upperBound="-1"
+        eType="#//PortR" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portsF" upperBound="-1"
+        eType="#//PortF" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortR" eSuperTypes="#//Port"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortF" eSuperTypes="#//Port"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceF" eSuperTypes="#//Service"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceR" eSuperTypes="#//Service"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Connecteur" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromI" eType="#//InterfaceConnecteur"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toI" eType="#//InterfaceConnecteur"
+        containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnecteurSimple" eSuperTypes="#//Connecteur">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="glu" eType="#//Glu" containment="true"
+        resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnecteurComposite" eSuperTypes="#//Connecteur">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connecteurs" upperBound="-1"
+        eType="#//Connecteur" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Glu">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roleR" eType="#//RoleR"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roleF" eType="#//RoleF"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Role" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleF" eSuperTypes="#//Role"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleR" eSuperTypes="#//Role"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Propriete" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PropFonct" eSuperTypes="#//Propriete"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PropNonFonc" eSuperTypes="#//Propriete"/>
+</ecore:EPackage>

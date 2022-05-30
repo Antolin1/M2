@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ecore_simplified:EPackage xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore_simplified="http://www.example.org/ecore_simplified" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.20">
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.8"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.14">
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.3"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.23"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.14/@eStructuralFeatures.0" eType="//@eClassifiers.14"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.16"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.16"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.5">
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.4"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.21/@eStructuralFeatures.0" eType="//@eClassifiers.21"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.0"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.19"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.19"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.0"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.19"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.21"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.20"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.4"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.0"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.20/@eStructuralFeatures.7" eType="//@eClassifiers.20"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.24"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.24"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.15">
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.3"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.6"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.7"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.3"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.17/@eStructuralFeatures.3" eType="//@eClassifiers.17"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.25"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.5">
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.8">
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.10/@eStructuralFeatures.3" eType="//@eClassifiers.10"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.15">
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.11"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.12"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.3"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.9/@eStructuralFeatures.0" eType="//@eClassifiers.9"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.14">
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.17/@eStructuralFeatures.2" eType="//@eClassifiers.17"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.16">
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.2/@eStructuralFeatures.2" eType="//@eClassifiers.2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.14">
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass"/>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.15">
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.3"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.3"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.13/@eStructuralFeatures.0" eType="//@eClassifiers.13"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.5/@eStructuralFeatures.4" eType="//@eClassifiers.5"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.17/@eStructuralFeatures.5" eType="//@eClassifiers.17"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.17/@eStructuralFeatures.4" eType="//@eClassifiers.17"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.22">
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.21/@eStructuralFeatures.2" eType="//@eClassifiers.21"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.20">
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.19"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.4"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.22">
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.3"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.7"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.4/@eStructuralFeatures.13" eType="//@eClassifiers.4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.22">
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.4/@eStructuralFeatures.3" eType="//@eClassifiers.4"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.25"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.18/@eStructuralFeatures.0" eType="//@eClassifiers.18"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.5"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.24"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.15">
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.11"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.11"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.5"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.24"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass">
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.3"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.16">
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.24"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.24"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.5"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.24"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.25"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.15">
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.24"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+  <eClassifiers xsi:type="ecore_simplified:EDataType"/>
+</ecore_simplified:EPackage>

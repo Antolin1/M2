@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="app" nsURI="http://www.example.org/app" nsPrefix="app">
+  <eClassifiers xsi:type="ecore:EClass" name="Classifier"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Activities"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelView"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NewEClass4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="App"/>
+</ecore:EPackage>

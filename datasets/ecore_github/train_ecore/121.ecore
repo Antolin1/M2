@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tictactoe" nsURI="http://www.obeonetwork.org/dsl/tictactoe"
+    nsPrefix="tictactoe">
+  <eClassifiers xsi:type="ecore:EClass" name="TicTacToe">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="grids3d" upperBound="-1"
+        eType="#//Grid3D" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Column">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="2" eType="#//Cell"
+        eOpposite="#//Cell/column"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Mark">
+    <eLiterals name="none" literal="NONE"/>
+    <eLiterals name="cross" value="1" literal="CROSS"/>
+    <eLiterals name="circle" value="2" literal="CIRCLE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Grid">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="columns" upperBound="2"
+        eType="#//Column" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lines" upperBound="2" eType="#//Line"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
+        eType="#//Cell" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Line">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="2" eType="#//Cell"
+        eOpposite="#//Cell/line"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Cell">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="#//Column"
+        eOpposite="#//Column/cells"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="line" eType="#//Line" eOpposite="#//Line/cells"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mark" eType="#//Mark"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Grid3D">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="grids" upperBound="2" eType="#//Grid"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

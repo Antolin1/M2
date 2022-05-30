@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="composition" nsURI="http://www.example.org/composition" nsPrefix="composition">
+  <eClassifiers xsi:type="ecore:EClass" name="MainClass">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mainpart2" upperBound="-1"
+        eType="#//MainPart2" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mainpart3" upperBound="-1"
+        eType="#//MainPart3" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MainPart1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MainPart2">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="part1part" upperBound="-1"
+        eType="#//Part1Part" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mainpart1" upperBound="-1"
+        eType="#//MainPart1" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MainPart3">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="part3part" upperBound="-1"
+        eType="#//Part3Part" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Part1Part"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Part3Part"/>
+</ecore:EPackage>

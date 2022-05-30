@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="functioncall" nsURI="http://functioncall.functioncall.functioncall/" nsPrefix="functioncall">
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptA"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptB" eSuperTypes="//ConceptA"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptC">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concepta2" lowerBound="1" eType="//ConceptA" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concepta1" lowerBound="1" eType="//ConceptA" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptb" lowerBound="1" eType="//ConceptB" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="GoldbeterKoshland" nsURI="platform:/resource/GoldbeterKoshland/model/GoldbeterKoshland.ecore"
+    nsPrefix="GoldbeterKoshland">
+  <eClassifiers xsi:type="ecore:EClass" name="Mixture">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="agents" upperBound="-1"
+        eType="#//Agent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//State" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="P_s" eSuperTypes="#//State"/>
+  <eClassifiers xsi:type="ecore:EClass" name="T" eSuperTypes="#//Agent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="x_u" eType="#//U_s"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="x_p" eType="#//P_s"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="y_u" eType="#//U_s"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="y_p" eType="#//P_s"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="x" eType="#//Agent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="y" eType="#//Agent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="U_s" eSuperTypes="#//State"/>
+  <eClassifiers xsi:type="ecore:EClass" name="K" eSuperTypes="#//Agent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="a" eType="#//Agent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="State" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="P" eSuperTypes="#//Agent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="a" eType="#//Agent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Agent" abstract="true"/>
+</ecore:EPackage>

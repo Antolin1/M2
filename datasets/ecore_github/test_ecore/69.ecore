@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="program"
+    nsURI="http://hPE.backend.program" nsPrefix="hPE.backend.program">
+  <eClassifiers xsi:type="ecore:EClass" name="HBEProcedure">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+        eType="#//HBELocalVariable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//HBEParameter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="command" lowerBound="1"
+        eType="#//HBECommandBlock"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HBELocalVariable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HBEParameter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HBECommandBlock" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HBECompoundBlock" abstract="true" eSuperTypes="#//HBECommandBlock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="blocks" upperBound="-1"
+        eType="#//HBECommandBlock"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HBESequentialBlock" eSuperTypes="#//HBECompoundBlock"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HBEConcurrentBlock" eSuperTypes="#//HBECompoundBlock"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HBEAlternateBlock" eSuperTypes="#//HBECompoundBlock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="branches" lowerBound="1"
+        upperBound="-1" eType="#//HAlternateBranch" eOpposite="#//HAlternateBranch/block"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HProcedureCall" eSuperTypes="#//HBECommandBlock"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HAlternateBranch">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="block" lowerBound="1" eType="#//HBEAlternateBlock"
+        eOpposite="#//HBEAlternateBlock/branches"/>
+  </eClassifiers>
+</ecore:EPackage>

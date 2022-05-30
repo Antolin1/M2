@@ -20,7 +20,6 @@ def get_graph_from_model(path_model, path_metamodels, metafilter=None,
     for root in resource.contents:
         list_elements.append(root)
         list_elements = list_elements + list(root.eAllContents())
-
     return get_graph_from_model_elements(list_elements, metafilter=metafilter,
                                          consider_atts=consider_atts)
 
@@ -130,26 +129,30 @@ def get_model_from_graph(path_metamodels, G):
         eobj = None
         if n not in nodes_objects:
             type = G.nodes[n]['type']
+            if type not in name_correspondence:
+                continue
             cal = name_correspondence[type]
             eobj = cal()
             nodes_objects[n] = eobj
         else:
             eobj = nodes_objects[n]
         # TODO: the <none> token
-        if 'atts' in G.nodes[n]:
-            atts = G.nodes[n]['atts']
-            for att_name, value in atts.items():
-                if name_attributes[att_name].many:
-                    for v in value:
-                        getattr(eobj, att_name).add(v)
-                else:
-                    setattr(eobj, att_name, value)
+        # if 'atts' in G.nodes[n]:
+        #    atts = G.nodes[n]['atts']
+        #    for att_name, value in atts.items():
+        #        if name_attributes[att_name].many:
+        #            for v in value:
+        #                getattr(eobj, att_name).add(v)
+        #        else:
+        #            setattr(eobj, att_name, value)
 
         # references
         for n2 in G[n]:
             eobj2 = None
             if not n2 in nodes_objects:
                 type2 = G.nodes[n2]['type']
+                if type2 not in name_correspondence:
+                    continue
                 cal2 = name_correspondence[type2]
                 eobj2 = cal2()
                 nodes_objects[n2] = eobj2

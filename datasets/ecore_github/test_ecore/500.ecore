@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="types" nsURI="http://ch.elexis.core/model/types" nsPrefix="ch.elexis.core.types">
+  <eClassifiers xsi:type="ecore:EClass" name="Comparable" instanceClassName="java.lang.Comparable"
+      abstract="true" interface="true">
+    <eTypeParameters name="T"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="List" instanceClassName="java.util.List"
+      abstract="true" interface="true">
+    <eTypeParameters name="E"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Map" instanceClassName="java.util.Map"
+      abstract="true" interface="true">
+    <eTypeParameters name="K"/>
+    <eTypeParameters name="V"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ContactGender">
+    <eLiterals name="MALE"/>
+    <eLiterals name="FEMALE" value="1"/>
+    <eLiterals name="UNDEFINED" value="2"/>
+    <eLiterals name="UNKNOWN" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RelationshipType">
+    <eLiterals name="A_GENERIC"/>
+    <eLiterals name="A_UNKNOWN" value="9999" literal="A_UNKNOWN">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Fallback value in case the persisted value could not be mapped by this enumeration, depicts an erroneous state"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="BUSINESS_EMPLOYER" value="100"/>
+    <eLiterals name="BUSINESS_EMPLOYEE" value="101"/>
+    <eLiterals name="FAMILY_PARENT" value="200"/>
+    <eLiterals name="FAMILY_CHILD" value="210"/>
+    <eLiterals name="FAMILY_GUARDIAN" value="220" literal="FAMILY_GUARDIAN"/>
+    <eLiterals name="FAMILY_ICE" value="230" literal="FAMILY_ICE"/>
+    <eLiterals name="FAMILY_ALTERNATIVE" value="290" literal="FAMILY_ALTERNATIVE"/>
+    <eLiterals name="WELFARE_GENERAL_PRACTITIONER" value="300"/>
+    <eLiterals name="WELFARE_PATIENT" value="301"/>
+    <eLiterals name="WELFARE_CONSULTANT" value="310"/>
+    <eLiterals name="WELFARE_INSURER" value="410"/>
+    <eLiterals name="WELFARE_INSUREE" value="411"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Money" instanceClassName="ch.rgw.tools.Money"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Gender" instanceClassName="ch.elexis.core.types.Gender"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="LabItemTyp" instanceClassName="ch.elexis.core.types.LabItemTyp"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Country" instanceClassName="ch.elexis.core.types.Country"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="AddressType">
+    <eLiterals name="PRINCIPAL_RESIDENCE" literal="PRINCIPAL_RESIDENCE"/>
+    <eLiterals name="SECONDARY_RESIDENCE" value="1" literal="SECONDARY_RESIDENCE"/>
+    <eLiterals name="HOLIDAY_HOME" value="2" literal="HOLIDAY_HOME"/>
+    <eLiterals name="PLACE_OF_RESIDENCE" value="3" literal="PLACE_OF_RESIDENCE"/>
+    <eLiterals name="EMPLOYER" value="4" literal="EMPLOYER"/>
+    <eLiterals name="FAMILY_FRIENDS" value="5" literal="FAMILY_FRIENDS"/>
+    <eLiterals name="ATTACHMENT_FIGURE" value="6" literal="ATTACHMENT_FIGURE"/>
+    <eLiterals name="PRISON" value="7" literal="PRISON"/>
+    <eLiterals name="NURSING_HOME" value="8" literal="NURSING_HOME"/>
+    <eLiterals name="OTHER" value="9" literal="OTHER"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DocumentStatus">
+    <eLiterals name="NEW"/>
+    <eLiterals name="CHANGED" value="1"/>
+    <eLiterals name="VALIDATED" value="2"/>
+    <eLiterals name="SENT" value="3"/>
+    <eLiterals name="RECIVED" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="PathologicDescription" instanceClassName="ch.elexis.core.types.PathologicDescription"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="LocalDateTime" instanceClassName="java.time.LocalDateTime"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="InputStream" instanceClassName="java.io.InputStream"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="OutputStream" instanceClassName="java.io.OutputStream"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="LocalDate" instanceClassName="java.time.LocalDate"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="XidQuality" instanceClassName="ch.elexis.core.model.XidQuality"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="LabOrderState" instanceClassName="ch.elexis.core.model.LabOrderState"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ArticleTyp" instanceClassName="ch.elexis.core.types.ArticleTyp"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="VatInfo" instanceClassName="ch.elexis.core.types.VatInfo"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Result" instanceClassName="ch.rgw.tools.Result"
+      abstract="true" interface="true">
+    <eTypeParameters name="T"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="OrderEntryState" instanceClassName="ch.elexis.core.model.OrderEntryState"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ArticleSubTyp" instanceClassName="ch.elexis.core.types.ArticleSubTyp"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="VersionedResource" instanceClassName="ch.rgw.tools.VersionedResource"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="EntryType" instanceClassName="ch.elexis.core.model.prescription.EntryType"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="InvoiceState" instanceClassName="ch.elexis.core.model.InvoiceState"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ChronoUnit" instanceClassName="java.time.temporal.ChronoUnit"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BillingLaw" instanceClassName="ch.elexis.core.model.ch.BillingLaw"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="MaritalStatus" instanceClassName="ch.elexis.core.model.MaritalStatus"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="MimeType" instanceClassName="ch.elexis.core.model.MimeType"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="InvoiceRejectCode" instanceClassName="ch.elexis.core.model.InvoiceState.REJECTCODE"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Optional" instanceClassName="java.util.Optional">
+    <eTypeParameters name="T"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AppointmentType">
+    <eLiterals name="DEFAULT" value="2"/>
+    <eLiterals name="FREE"/>
+    <eLiterals name="BOOKED" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AppointmentState">
+    <eLiterals name="EMPTY"/>
+    <eLiterals name="DEFAULT" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="charArray" instanceClassName="char[]"/>
+</ecore:EPackage>

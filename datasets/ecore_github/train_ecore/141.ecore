@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="hadoopmodel" nsURI="http://www.sei.pku.edu.cn/rsa/hadoopmodel"
+    nsPrefix="hadoopmodel">
+  <eClassifiers xsi:type="ecore:EClass" name="Server"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Java">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="java_hostOn" eType="#//Server"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JobTracker">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jobtracker_dependOn" lowerBound="1"
+        eType="#//HDFSNameNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jobtracker_hostOn" eType="#//Server"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskTracker">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasktracker_connectTo"
+        lowerBound="1" eType="#//JobTracker"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasktracker_hostOn" eType="#//Server"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HDFSNameNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hdfsnamenode_hostOn" eType="#//Server"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HDFSDataNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hdfsdatanode_connectTo"
+        lowerBound="1" eType="#//HDFSNameNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hdfsdatanode_hostOn" eType="#//Server"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HBaseMaster">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbasemaster_dependOn" eType="#//HDFSNameNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbasemaster_hostOn" eType="#//Server"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HBaseRegionServer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbaseregionserver_connectTo"
+        lowerBound="1" eType="#//HBaseMaster"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbaseregionserver_hostOn"
+        eType="#//Server"/>
+  </eClassifiers>
+</ecore:EPackage>

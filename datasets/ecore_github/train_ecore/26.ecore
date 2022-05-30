@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tc60201"
+    nsURI="http://www.plcopen.org/xml/tc6_0201/concept" nsPrefix="tc60201_concept">
+  <eClassifiers xsi:type="ecore:EClass" name="InOutVariableType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ContactType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectionPointIn"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SimultaneousConvergenceType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CoilType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OutVariableType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectionDivergenceType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Connection"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JumpStepType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RightPowerRailType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectorType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ActionBlockType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MacroStepType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableType2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SimultaneousDivergenceType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TransitionType1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectionConvergenceType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StepType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableType3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JumpType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReturnType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableType5"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SFCType1"/>
+</ecore:EPackage>

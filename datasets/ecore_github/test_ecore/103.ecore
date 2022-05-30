@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+  <ecore:EAnnotation source="ModelingUnit">
+    <details key="require" value="kermeta|"/>
+    <details key="using" value="ecore|"/>
+  </ecore:EAnnotation>
+  <ecore:EPackage name="ecore" nsURI="http://www.eclipse.org/emf/2002/Ecore" nsPrefix="ecore">
+    <eClassifiers xsi:type="ecore:EClass" name="EAttribute" eSuperTypes="#/1/EStructuralFeature">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="iD" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eAttributeType" lowerBound="1"
+          eType="#/1/EDataType" changeable="false" volatile="true" transient="true"
+          derived="true">
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+        <eAnnotations source="kermeta">
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EBoolean" instanceClassName="java.lang.Boolean">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::standard::Boolean"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EAnnotation" eSuperTypes="#/1/EModelElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="#/1/EString">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="details" upperBound="-1"
+          eType="#/1/EStringToStringMapEntry" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eModelElement" eType="#/1/EModelElement"
+          eOpposite="#/1/EModelElement/eAnnotations"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="contents" upperBound="-1"
+          eType="#/1/EObject" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="references" upperBound="-1"
+          eType="#/1/EObject"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EString" instanceClassName="java.lang.String">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::standard::String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EClass" eSuperTypes="#/1/EClassifier">
+      <eOperations name="isSuperTypeOf" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="someClass" eType="#/1/EClass"/>
+      </eOperations>
+      <eOperations name="getFeatureCount" eType="#/1/EInt">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="op_getEStructuralFeature" eType="#/1/EStructuralFeature">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="featureID" eType="#/1/EInt"/>
+      </eOperations>
+      <eOperations name="getFeatureID" eType="#/1/EInt">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="feature" eType="#/1/EStructuralFeature"/>
+      </eOperations>
+      <eOperations name="getEStructuralFeature" eType="#/1/EStructuralFeature">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="featureName" eType="#/1/EString"/>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstract" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="interface" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eSuperTypes" upperBound="-1"
+          eType="#/1/EClass"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eOperations" upperBound="-1"
+          eType="#/1/EOperation" containment="true" eOpposite="#/1/EOperation/eContainingClass"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eAllAttributes" upperBound="-1"
+          eType="#/1/EAttribute" changeable="false" volatile="true" transient="true"
+          derived="true">
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+        <eAnnotations source="kermeta">
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eAllReferences" upperBound="-1"
+          eType="#/1/EReference" changeable="false" volatile="true" transient="true"
+          derived="true">
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+        <eAnnotations source="kermeta">
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eReferences" upperBound="-1"
+          eType="#/1/EReference" changeable="false" volatile="true" transient="true"
+          derived="true">
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+        <eAnnotations source="kermeta">
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eAttributes" upperBound="-1"
+          eType="#/1/EAttribute" changeable="false" volatile="true" transient="true"
+          derived="true">
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+        <eAnnotations source="kermeta">
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eAllContainments" upperBound="-1"
+          eType="#/1/EReference" changeable="false" volatile="true" transient="true"
+          derived="true">
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+        <eAnnotations source="kermeta">
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eAllOperations" upperBound="-1"
+          eType="#/1/EOperation" changeable="false" volatile="true" transient="true"
+          derived="true">
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+        <eAnnotations source="kermeta">
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eAllStructuralFeatures"
+          upperBound="-1" eType="#/1/EStructuralFeature" changeable="false" volatile="true"
+          transient="true" derived="true">
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+        <eAnnotations source="kermeta">
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eAllSuperTypes" upperBound="-1"
+          eType="#/1/EClass" changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+        <eAnnotations source="kermeta">
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eIDAttribute" eType="#/1/EAttribute"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+        <eAnnotations source="kermeta">
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eStructuralFeatures"
+          upperBound="-1" eType="#/1/EStructuralFeature" containment="true" eOpposite="#/1/EStructuralFeature/eContainingClass"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eGenericSuperTypes" upperBound="-1"
+          eType="#/1/EGenericType" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eAllGenericSuperTypes"
+          upperBound="-1" eType="#/1/EGenericType" changeable="false" volatile="true"
+          transient="true" derived="true">
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+        <eAnnotations source="kermeta">
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EClassifier" abstract="true" eSuperTypes="#/1/ENamedElement">
+      <eOperations name="isInstance" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="object" eType="#/1/EJavaObject"/>
+      </eOperations>
+      <eOperations name="getClassifierID" eType="#/1/EInt">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceClassName" eType="#/1/EString">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceClass" eType="#/1/EJavaClass"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="false"/>
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="#/1/EJavaObject"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="false"/>
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceTypeName" eType="#/1/EString">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ePackage" eType="#/1/EPackage"
+          changeable="false" eOpposite="#/1/EPackage/eClassifiers"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eTypeParameters" upperBound="-1"
+          eType="#/1/ETypeParameter" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EJavaClass" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EJavaObject" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::standard::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EDataType" eSuperTypes="#/1/EClassifier">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="serializable" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EEnum" eSuperTypes="#/1/EDataType">
+      <eOperations name="op_getEEnumLiteral" eType="#/1/EEnumLiteral">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="name" eType="#/1/EString"/>
+      </eOperations>
+      <eOperations name="getEEnumLiteral" eType="#/1/EEnumLiteral">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="value" eType="#/1/EInt"/>
+      </eOperations>
+      <eOperations name="getEEnumLiteralByLiteral" eType="#/1/EEnumLiteral">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="literal" eType="#/1/EString"/>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eLiterals" upperBound="-1"
+          eType="#/1/EEnumLiteral" containment="true" eOpposite="#/1/EEnumLiteral/eEnum"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EEnumLiteral" eSuperTypes="#/1/ENamedElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#/1/EInt">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="instance" eType="#/1/EEnumerator">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="literal" eType="#/1/EString">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eEnum" eType="#/1/EEnum"
+          changeable="false" eOpposite="#/1/EEnum/eLiterals"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EInt" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::standard::Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EEnumerator" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EFactory" eSuperTypes="#/1/EModelElement">
+      <eOperations name="create" eType="#/1/EObject">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="eClass" eType="#/1/EClass"/>
+      </eOperations>
+      <eOperations name="createFromString" eType="#/1/EJavaObject">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="eDataType" eType="#/1/EDataType"/>
+        <eParameters name="literalValue" eType="#/1/EString"/>
+      </eOperations>
+      <eOperations name="convertToString" eType="#/1/EString">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="eDataType" eType="#/1/EDataType"/>
+        <eParameters name="instanceValue" eType="#/1/EJavaObject"/>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ePackage" lowerBound="1"
+          eType="#/1/EPackage" eOpposite="#/1/EPackage/eFactoryInstance"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EModelElement" abstract="true" eSuperTypes="#/1/EObject">
+      <eOperations name="getEAnnotation" eType="#/1/EAnnotation">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="source" eType="#/1/EString"/>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eAnnotations" upperBound="-1"
+          eType="#/1/EAnnotation" containment="true" eOpposite="#/1/EAnnotation/eModelElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ENamedElement" abstract="true" eSuperTypes="#/1/EModelElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#/1/EString">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EObject">
+      <eOperations name="eClass" eType="#/1/EClass">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="eIsProxy" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="eResource" eType="#/1/EResource">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="eContainer" eType="#/1/EObject">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="eContainingFeature" eType="#/1/EStructuralFeature">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="eContainmentFeature" eType="#/1/EReference">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="eContents" eType="#/1/EEList">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="eAllContents" eType="#/1/ETreeIterator">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="eCrossReferences" eType="#/1/EEList">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="op_eGet" eType="#/1/EJavaObject">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="feature" eType="#/1/EStructuralFeature"/>
+      </eOperations>
+      <eOperations name="eGet" eType="#/1/EJavaObject">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="feature" eType="#/1/EStructuralFeature"/>
+        <eParameters name="resolve" eType="#/1/EBoolean"/>
+      </eOperations>
+      <eOperations name="eSet">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="feature" eType="#/1/EStructuralFeature"/>
+        <eParameters name="newValue" eType="#/1/EJavaObject"/>
+      </eOperations>
+      <eOperations name="eIsSet" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="feature" eType="#/1/EStructuralFeature"/>
+      </eOperations>
+      <eOperations name="eUnset">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="feature" eType="#/1/EStructuralFeature"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EPackage" eSuperTypes="#/1/ENamedElement">
+      <eOperations name="getEClassifier" eType="#/1/EClassifier">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+        <eParameters name="name" eType="#/1/EString"/>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="nsURI" eType="#/1/EString">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="nsPrefix" eType="#/1/EString">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eFactoryInstance" lowerBound="1"
+          eType="#/1/EFactory" eOpposite="#/1/EFactory/ePackage"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eClassifiers" upperBound="-1"
+          eType="#/1/EClassifier" containment="true" eOpposite="#/1/EClassifier/ePackage"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eSubpackages" upperBound="-1"
+          eType="#/1/EPackage" containment="true" eOpposite="#/1/EPackage/eSuperPackage"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eSuperPackage" eType="#/1/EPackage"
+          changeable="false" eOpposite="#/1/EPackage/eSubpackages"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EParameter" eSuperTypes="#/1/ETypedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eOperation" eType="#/1/EOperation"
+          changeable="false" eOpposite="#/1/EOperation/eParameters"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EReference" eSuperTypes="#/1/EStructuralFeature">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="containment" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="container" eType="#/1/EBoolean"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="false"/>
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="resolveProxies" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eOpposite" eType="#/1/EReference"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eReferenceType" lowerBound="1"
+          eType="#/1/EClass" changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+        <eAnnotations source="kermeta">
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eKeys" upperBound="-1"
+          eType="#/1/EAttribute"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EStructuralFeature" abstract="true"
+        eSuperTypes="#/1/ETypedElement">
+      <eOperations name="getFeatureID" eType="#/1/EInt">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="getContainerClass" eType="#/1/EJavaClass">
+        <eAnnotations source="kermeta">
+          <details key="isAbstract" value="true"/>
+        </eAnnotations>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="changeable" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="volatile" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="transient" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValueLiteral"
+          eType="#/1/EString">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="#/1/EJavaObject"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="false"/>
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="unsettable" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="derived" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainingClass" eType="#/1/EClass"
+          changeable="false" eOpposite="#/1/EClass/eStructuralFeatures"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EOperation" eSuperTypes="#/1/ETypedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainingClass" eType="#/1/EClass"
+          changeable="false" eOpposite="#/1/EClass/eOperations"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eTypeParameters" upperBound="-1"
+          eType="#/1/ETypeParameter" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eParameters" upperBound="-1"
+          eType="#/1/EParameter" containment="true" eOpposite="#/1/EParameter/eOperation"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eExceptions" upperBound="-1"
+          eType="#/1/EClassifier"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eGenericExceptions" upperBound="-1"
+          eType="#/1/EGenericType" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ETypedElement" abstract="true" eSuperTypes="#/1/ENamedElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="ordered" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" eType="#/1/EBoolean">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowerBound" eType="#/1/EInt">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperBound" eType="#/1/EInt">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="many" eType="#/1/EBoolean"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="false"/>
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="#/1/EBoolean"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="false"/>
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eType" eType="#/1/EClassifier"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eGenericType" eType="#/1/EGenericType"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EStringToStringMapEntry">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="#/1/EString">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#/1/EString">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EGenericType" eSuperTypes="#/1/EObject">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eUpperBound" eType="#/1/EGenericType"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eTypeArguments" upperBound="-1"
+          eType="#/1/EGenericType" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eRawType" lowerBound="1"
+          eType="#/1/EClassifier" changeable="false" volatile="true" transient="true"
+          derived="true">
+        <eAnnotations source="kermetaderivedProp.getter">
+          <details key="body" value="do&#xA;&#x9;raise kermeta::exceptions::NotImplementedException.new&#xA;end"/>
+        </eAnnotations>
+        <eAnnotations source="kermeta">
+          <details key="isReadOnly" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eLowerBound" eType="#/1/EGenericType"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eTypeParameter" eType="#/1/ETypeParameter"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eClassifier" eType="#/1/EClassifier"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ETypeParameter" eSuperTypes="#/1/ENamedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eBounds" upperBound="-1"
+          eType="#/1/EGenericType" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EBigDecimal" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EBigInteger" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EBooleanObject" instanceClassName="java.lang.Boolean">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::standard::Boolean"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EByte" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EByteArray" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EByteObject" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EChar" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="ECharacterObject" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EDate" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EDiagnosticChain" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EDouble" instanceClassName="java.lang.Double">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::standard::Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EDoubleObject" instanceClassName="java.lang.Double">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::standard::Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EEList" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EFeatureMap" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EFeatureMapEntry" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::ecore::EFeatureMapEntry"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EFloat" instanceClassName="java.lang.Double">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::standard::Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EFloatObject" instanceClassName="java.lang.Double">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::standard::Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EIntegerObject" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::standard::Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="ELong" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="ELongObject" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EMap" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EResource" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EResourceSet" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EShort" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="EShortObject" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="ETreeIterator" instanceClassName="java.lang.Object">
+      <eAnnotations source="kermeta">
+        <details key="alias" value="kermeta::language::structure::Object"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="_KermetaSpecialTypesAlias_" instanceClassName="java.lang.Object"/>
+  </ecore:EPackage>
+  <ecore:EAnnotation source="dependentResource"/>
+</xmi:XMI>

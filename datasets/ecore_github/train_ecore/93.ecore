@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="repository" nsURI="http://www.example.org/repository" nsPrefix="repository">
+  <eClassifiers xsi:type="ecore:EClass" name="Repository">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
+        eType="#//Lens" eOpposite="#//Lens/view"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
+        eType="#//Lens" eOpposite="#//Lens/bases"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Lens">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="view" lowerBound="1" eType="#//Repository"
+        eOpposite="#//Repository/sources"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bases" lowerBound="1" upperBound="-1"
+        eType="#//Repository" eOpposite="#//Repository/outgoing"/>
+  </eClassifiers>
+</ecore:EPackage>

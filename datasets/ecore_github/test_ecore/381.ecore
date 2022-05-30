@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tdse3" nsURI="http://www.example.org/tdse3" nsPrefix="tdse3">
+  <eClassifiers xsi:type="ecore:EClass" name="Controller">
+    <eOperations name="tick" lowerBound="1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="carLight" lowerBound="1"
+        eType="#//CarLight" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pedLight" lowerBound="1"
+        eType="#//PedLight" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CarLight">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="colors" upperBound="3"
+        eType="#//colors"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PedLight">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="colors" upperBound="2"
+        eType="#//colors"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="colors">
+    <eLiterals name="red"/>
+    <eLiterals name="yellow" value="1"/>
+    <eLiterals name="green" value="2"/>
+  </eClassifiers>
+</ecore:EPackage>

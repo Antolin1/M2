@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://rtm.aist.go.jp/toolscommon/model/toolscommon"
+    nsPrefix="jp.go.aist.rtm.toolscommon.model.core">
+  <eClassifiers xsi:type="ecore:EClass" name="CorbaWrapperObject" abstract="true"
+      eSuperTypes="#//WrapperObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="corbaObject" eType="#//Object"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelElement" eSuperTypes="#//IAdaptable">
+    <eOperations name="accept">
+      <eParameters name="visiter" eType="#//Visiter"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraint" eType="#//Rectangle"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IAdaptable" instanceClassName="org.eclipse.core.runtime.IAdaptable"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LocalObject" instanceClassName="jp.go.aist.rtm.toolscommon.synchronizationframework.LocalObject"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WrapperObject" eSuperTypes="#//ModelElement #//LocalObject"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Rectangle" instanceClassName="jp.go.aist.rtm.toolscommon.model.core.Rectangle"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Visiter" instanceClassName="jp.go.aist.rtm.toolscommon.model.core.Visiter"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="org.omg.CORBA.Object"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Point" instanceClassName="jp.go.aist.rtm.toolscommon.model.core.Point"/>
+</ecore:EPackage>

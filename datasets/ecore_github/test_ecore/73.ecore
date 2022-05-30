@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+  <ecore:EAnnotation source="ModelingUnit">
+    <details key="require" value="kermeta|"/>
+    <details key="using" value="ClientServer|kermeta::standard|"/>
+  </ecore:EAnnotation>
+  <ecore:EPackage name="ClientServer" nsURI="platform:/resource/KermetaProject/src/kermeta/ClientServer.ecore#/"
+      nsPrefix="ClientServer">
+    <eClassifiers xsi:type="ecore:EClass" name="NameElement" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#/1/String">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Interface" eSuperTypes="#/1/NameElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="isImplementedBy" eType="#/1/Server"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="usedBy" eType="#/1/Client"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Client" eSuperTypes="#/1/NameElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="browser" eType="#/1/String">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="inUse" eType="#/1/Interface"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="connectedTo" eType="#/1/Server"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Server" eSuperTypes="#/1/NameElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="IP" eType="#/1/String">
+        <eAnnotations source="kermeta">
+          <details key="isComposite" value="true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="implements" unique="false"
+          lowerBound="1" upperBound="-1" eType="#/1/Interface"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="connectedTo" lowerBound="1"
+          upperBound="-1" eType="#/1/Client"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="String" instanceClassName="java.lang.String"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="_KermetaSpecialTypesAlias_" instanceClassName="java.lang.Object"/>
+  </ecore:EPackage>
+  <ecore:EAnnotation source="dependentResource"/>
+</xmi:XMI>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="manytomany"
+    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/manytomany" nsPrefix="manytomany">
+  <eClassifiers xsi:type="ecore:EClass" name="Cntr">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Cntr"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rght" lowerBound="1" upperBound="-1"
+        eType="#//Rght" resolveProxies="false" eOpposite="#//Rght/cntr">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(fetch=EAGER cascade={MERGE,PERSIST} targetEntity=&quot;Rght&quot; indexed=&quot;false&quot;)&#xA;@JoinTable(name=&quot;RightCenter&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="rght"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lft" lowerBound="1" upperBound="-1"
+        eType="#//Lft" resolveProxies="false" eOpposite="#//Lft/cntr">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@ManyToMany(fetch=EAGER cascade={MERGE,PERSIST} targetEntity=&quot;Lft&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="lft"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Lft">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Lft"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cntr" lowerBound="1" upperBound="-1"
+        eType="#//Cntr" resolveProxies="false" eOpposite="#//Cntr/lft">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@ManyToMany(fetch=LAZY cascade={MERGE,PERSIST} targetEntity=&quot;Cntr&quot; mappedBy=&quot;lft&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="cntr"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rght">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Rght"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cntr" lowerBound="1" upperBound="-1"
+        eType="#//Cntr" resolveProxies="false" eOpposite="#//Cntr/rght">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@ManyToMany(fetch=LAZY cascade={MERGE,PERSIST} targetEntity=&quot;Cntr&quot; mappedBy=&quot;rght&quot; indexed=&quot;false&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@JoinTable(name=&quot;RightCenter&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="cntr"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="symphony_invocator_integration_design_notes" nsURI="http://symphony_invocator_integration_design_notes/1.0"
+    nsPrefix="symphony_invocator_integration_design_notes">
+  <eClassifiers xsi:type="ecore:EClass" name="RunEnvironment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variablesList" eType="#//VariablesList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contextsList" eType="#//ContextsList"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Run">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="runEnvironment" eType="#//RunEnvironment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operationCallsList" eType="#//OperationCallsList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operationCallResults" eType="#//OperationCallResults"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperationCallsList">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operationCalls" upperBound="-1"
+        eType="#//OperationCall" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="run" eType="#//Run"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperationCallResults"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OperationCall">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operationCallsList" eType="#//OperationCallsList"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Deployment" eSuperTypes="#//RunEnvironment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="plans" upperBound="-1"
+        eType="#//Plan"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariablesList"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextsList"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Plan">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operationCall" eType="#//OperationCall"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass0"/>
+</ecore:EPackage>

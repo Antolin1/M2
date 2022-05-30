@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ArchimateMotivation" nsURI="archimate-motivation" nsPrefix="archimate-motivation">
+  <eAnnotations source="Diagram">
+    <details key="name" value="Archimate Motivation"/>
+    <details key="icon" value="icons/motivation-diagram-16.png"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeElement" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Stakeholder" eSuperTypes="#//NodeElement">
+    <eAnnotations source="Node">
+      <details key="base" value="Class"/>
+      <details key="shape" value="shapes/Stakeholder.svg"/>
+      <details key="icon" value="icons/stakeholder-16.png"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Driver" eSuperTypes="#//NodeElement">
+    <eAnnotations source="Node">
+      <details key="base" value="Class"/>
+      <details key="shape" value="shapes/Driver.svg"/>
+      <details key="icon" value="icons/driver-16.png"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Assessment" eSuperTypes="#//NodeElement">
+    <eAnnotations source="Node">
+      <details key="base" value="Class"/>
+      <details key="shape" value="shapes/Assessment.svg"/>
+      <details key="icon" value="icons/assessment-16.png"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Goal" eSuperTypes="#//NodeElement">
+    <eAnnotations source="Node">
+      <details key="base" value="Class"/>
+      <details key="shape" value="shapes/Goal.svg"/>
+      <details key="icon" value="icons/goal-16.png"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Requirement" eSuperTypes="#//NodeElement">
+    <eAnnotations source="Node">
+      <details key="base" value="Class"/>
+      <details key="shape" value="shapes/Requirement.svg"/>
+      <details key="icon" value="icons/requirement-16.png"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Constraint" eSuperTypes="#//NodeElement">
+    <eAnnotations source="Node">
+      <details key="base" value="Class"/>
+      <details key="shape" value="shapes/Constraint.svg"/>
+      <details key="icon" value="icons/constraint-16.png"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Principle" eSuperTypes="#//NodeElement">
+    <eAnnotations source="Node">
+      <details key="base" value="Class"/>
+      <details key="shape" value="shapes/Principle.svg"/>
+      <details key="icon" value="icons/principle-16.png"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Relationship" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//NodeElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//NodeElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Association" eSuperTypes="#//Relationship">
+    <eAnnotations source="Edge">
+      <details key="base" value="Association"/>
+      <details key="source" value="source"/>
+      <details key="target" value="target"/>
+      <details key="icon" value="icons/association-16.png"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Aggregation" eSuperTypes="#//Relationship">
+    <eAnnotations source="Edge">
+      <details key="base" value="Association"/>
+      <details key="source" value="source"/>
+      <details key="target" value="target"/>
+      <details key="icon" value="icons/aggregation-16.png"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Realization" eSuperTypes="#//Relationship">
+    <eAnnotations source="Edge">
+      <details key="base" value="Realization"/>
+      <details key="source" value="source"/>
+      <details key="target" value="target"/>
+      <details key="icon" value="icons/realization-16.png"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Influence" eSuperTypes="#//Relationship">
+    <eAnnotations source="Edge">
+      <details key="base" value="Dependency"/>
+      <details key="source" value="source"/>
+      <details key="target" value="target"/>
+      <details key="icon" value="icons/influence-16.png"/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

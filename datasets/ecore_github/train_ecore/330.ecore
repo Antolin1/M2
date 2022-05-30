@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="CIM"
+    nsURI="http:///CIM.ecore" nsPrefix="CIM">
+  <eClassifiers xsi:type="ecore:EDataType" name="uint8" instanceClassName="uint8"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="sint8" instanceClassName="sint8"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="uint16" instanceClassName="uint16"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="sint16" instanceClassName="sint16"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="uint32" instanceClassName="uint32"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="sint32" instanceClassName="sint32"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="uint64" instanceClassName="uint64"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="sint64" instanceClassName="sint64"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="boolean" instanceClassName="boolean"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="real32" instanceClassName="real32"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="real64" instanceClassName="real64"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="datetime" instanceClassName="datetime"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="char16" instanceClassName="char16"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="string" instanceClassName="string"/>
+</ecore:EPackage>

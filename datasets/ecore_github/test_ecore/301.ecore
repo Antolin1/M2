@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="classassociation"
+    nsURI="http://org.isoe.gramgen.pattern.classassociation.v0" nsPrefix="classassociation">
+  <eClassifiers xsi:type="ecore:EClass" name="Source">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sl" upperBound="-1" eType="#//LabeledLink"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LabeledLink">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ltrg" eType="#//Target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lsrc" eType="#//Source"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Target"/>
+</ecore:EPackage>

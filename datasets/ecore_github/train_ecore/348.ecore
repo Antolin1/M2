@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="emfrelations" nsURI="http://emfrelations.emfrelations.emfrelations/"
+    nsPrefix="emfrelations">
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptA0">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptb0" eType="#//ConceptB0"
+        eOpposite="#//ConceptB0/concepta0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptB0">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concepta0" eType="#//ConceptA0"
+        eOpposite="#//ConceptA0/conceptb0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptA1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptb1" upperBound="-1"
+        eType="#//ConceptB1" eOpposite="#//ConceptB1/concepta1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptB1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concepta1" eType="#//ConceptA1"
+        eOpposite="#//ConceptA1/conceptb1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptA2">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptb2" eType="#//ConceptB2"
+        eOpposite="#//ConceptB2/concepta2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptB2">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concepta2" upperBound="-1"
+        eType="#//ConceptA2" eOpposite="#//ConceptA2/conceptb2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptA3">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptb3" upperBound="-1"
+        eType="#//ConceptB3" eOpposite="#//ConceptB3/concepta3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptB3">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concepta3" upperBound="-1"
+        eType="#//ConceptA3" eOpposite="#//ConceptA3/conceptb3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptA4">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptb4" eType="#//ConceptB4"
+        containment="true" eOpposite="#//ConceptB4/concepta4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptB4">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concepta4" eType="#//ConceptA4"
+        eOpposite="#//ConceptA4/conceptb4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptA5">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptb5" upperBound="-1"
+        eType="#//ConceptB5" containment="true" eOpposite="#//ConceptB5/concepta5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptB5">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concepta5" eType="#//ConceptA5"
+        eOpposite="#//ConceptA5/conceptb5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptA8">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptb8" eType="#//ConceptB8"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptB8"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptA9">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptb9" upperBound="-1"
+        eType="#//ConceptB9"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptB9"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptA10">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptb10" eType="#//ConceptB10"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptB10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptA11">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptb11" upperBound="-1"
+        eType="#//ConceptB11" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptB11"/>
+</ecore:EPackage>

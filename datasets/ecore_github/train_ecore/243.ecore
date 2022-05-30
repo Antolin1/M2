@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="testuserdefinesoverwritten"
+    nsURI="http://testuserdefinesoverwritten/1.0" nsPrefix="testuserdefinesoverwritten">
+  <eClassifiers xsi:type="ecore:EClass" name="V">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
+        eType="#//E" eOpposite="#//E/start"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" upperBound="-1"
+        eType="#//E" eOpposite="#//E/end"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="E">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" lowerBound="1" eType="#//V"
+        eOpposite="#//V/outgoing"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end" lowerBound="1" eType="#//V"
+        eOpposite="#//V/incoming"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="V1" eSuperTypes="#//V">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incoming1" upperBound="-1"
+        eType="#//E1" eOpposite="#//E1/end1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="E1" eSuperTypes="#//E">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end1" lowerBound="1" eType="#//V1"
+        eOpposite="#//V1/incoming1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="V2" eSuperTypes="#//V1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incoming2" upperBound="-1"
+        eType="#//E2" eOpposite="#//E2/end2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="V3" eSuperTypes="#//V2">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incoming3" upperBound="-1"
+        eType="#//E3" eOpposite="#//E3/end3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="E2" eSuperTypes="#//E1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end2" lowerBound="1" eType="#//V2"
+        eOpposite="#//V2/incoming2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="E3" eSuperTypes="#//E2">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end3" lowerBound="1" eType="#//V3"
+        eOpposite="#//V3/incoming3"/>
+  </eClassifiers>
+</ecore:EPackage>

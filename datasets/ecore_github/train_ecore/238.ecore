@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="schoolLife" nsURI="com.softsystems.schoolLife" nsPrefix="schoolLife">
+  <eClassifiers xsi:type="ecore:EClass" name="System">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classe" lowerBound="3"
+        upperBound="-1" eType="#//Classe" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="matiere" upperBound="-1"
+        eType="#//Matiere"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compte" upperBound="-1"
+        eType="#//Compte"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="utilisateurList" upperBound="-1"
+        eType="#//User" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="User">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compte_utilisateur" lowerBound="1"
+        eType="#//Compte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Professeur" eSuperTypes="#//User">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classList" lowerBound="1"
+        upperBound="-1" eType="#//Classe"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Eleve" eSuperTypes="#//User">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" lowerBound="1" eType="#//Classe"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parent" eSuperTypes="#//User"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Admin" eSuperTypes="#//User"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Surveillant" eSuperTypes="#//User"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Censeur" eSuperTypes="#//User"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Proviseur" eSuperTypes="#//User"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Profil_utilisateur"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Classe">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EleveList" upperBound="-1"
+        eType="#//Eleve"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="MatiereList" lowerBound="1"
+        upperBound="-1" eType="#//Matiere"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Matiere"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Compte">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="profil_utilisateur" lowerBound="1"
+        eType="#//Profil_utilisateur" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Compte_parent" eSuperTypes="#//Compte"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Compte_Eleve" eSuperTypes="#//Compte"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Compte_prof" eSuperTypes="#//Compte"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Compte_admin" eSuperTypes="#//Compte"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Compte_Proviseur" eSuperTypes="#//Compte"/>
+</ecore:EPackage>

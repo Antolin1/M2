@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="testmaprelations" nsURI="http://testmaprelations.testmaprelations.testmaprelations/"
+    nsPrefix="testmaprelations">
+  <eClassifiers xsi:type="ecore:EClass" name="MapCA0ToCB0MapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="#//CA0" eOpposite="#//CA0/mapca0tocb0mapentry"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//CB0" eOpposite="#//CB0/mapca0tocb0mapentry"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CA0">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapca0tocb0mapentry" eType="#//MapCA0ToCB0MapEntry"
+        eOpposite="#//MapCA0ToCB0MapEntry/key"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CB0">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapca0tocb0mapentry" eType="#//MapCA0ToCB0MapEntry"
+        eOpposite="#//MapCA0ToCB0MapEntry/value"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MapCA1ToCB1MapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" upperBound="-1" eType="#//CA1"
+        eOpposite="#//CA1/mapca0tocb0mapentry"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//CB1" eOpposite="#//CB1/mapca0tocb0mapentry"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CB1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapca0tocb0mapentry" eType="#//MapCA1ToCB1MapEntry"
+        eOpposite="#//MapCA1ToCB1MapEntry/value"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CA1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapca0tocb0mapentry" eType="#//MapCA1ToCB1MapEntry"
+        eOpposite="#//MapCA1ToCB1MapEntry/key"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CA2">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapca0tocb0mapentry" upperBound="-1"
+        eType="#//MapCA2ToCB2MapEntry" eOpposite="#//MapCA2ToCB2MapEntry/key"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CB2">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapca0tocb0mapentry" upperBound="-1"
+        eType="#//MapCA2ToCB2MapEntry" eOpposite="#//MapCA2ToCB2MapEntry/value"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MapCA2ToCB2MapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="#//CA2" eOpposite="#//CA2/mapca0tocb0mapentry"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//CB2" eOpposite="#//CB2/mapca0tocb0mapentry"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CB3">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapca0tocb0mapentry" upperBound="-1"
+        eType="#//MapCA3ToCB3MapEntry" eOpposite="#//MapCA3ToCB3MapEntry/value"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CA3">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapca0tocb0mapentry" upperBound="-1"
+        eType="#//MapCA3ToCB3MapEntry" eOpposite="#//MapCA3ToCB3MapEntry/key"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MapCA3ToCB3MapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" upperBound="-1" eType="#//CA3"
+        eOpposite="#//CA3/mapca0tocb0mapentry"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//CB3" eOpposite="#//CB3/mapca0tocb0mapentry"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CA4">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapca0tocb0mapentry" eType="#//MapCA4ToCB4MapEntry"
+        eOpposite="#//MapCA4ToCB4MapEntry/key"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MapCA4ToCB4MapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="#//CA4" containment="true"
+        eOpposite="#//CA4/mapca0tocb0mapentry"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//CB4" containment="true"
+        eOpposite="#//CB4/mapca0tocb0mapentry"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CB4">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapca0tocb0mapentry" eType="#//MapCA4ToCB4MapEntry"
+        eOpposite="#//MapCA4ToCB4MapEntry/value"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CA5">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapca0tocb0mapentry" eType="#//MapCA5ToCB5MapEntry"
+        eOpposite="#//MapCA5ToCB5MapEntry/key"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CB5">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapca0tocb0mapentry" eType="#//MapCA5ToCB5MapEntry"
+        eOpposite="#//MapCA5ToCB5MapEntry/value"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MapCA5ToCB5MapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" upperBound="-1" eType="#//CA5"
+        containment="true" eOpposite="#//CA5/mapca0tocb0mapentry"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//CB5" containment="true" eOpposite="#//CB5/mapca0tocb0mapentry"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MapCA6ToCB6MapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="#//CA6"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//CB6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CA6"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CB6"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CA7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MapCA7ToCB7MapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" upperBound="-1" eType="#//CA7"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//CB7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CB7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CA8"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MapCA8ToCB8MapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="#//CA8" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//CB8" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CB8"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MapCA9ToCB9MapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" upperBound="-1" eType="#//CA9"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//CB9" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CB9"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CA9"/>
+</ecore:EPackage>

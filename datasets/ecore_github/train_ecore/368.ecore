@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="bz444321" nsURI="http://www.eclipse.org/emf/texo/test/model/issues/bz444321"
+    nsPrefix="bz444321">
+  <eClassifiers xsi:type="ecore:EClass" name="MainElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="single" eType="#//SubElement">
+      <eAnnotations source="org.eclipse.emf.texo">
+        <details key="java.member" value="single"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multi" upperBound="-1"
+        eType="#//SubElement">
+      <eAnnotations source="org.eclipse.emf.texo">
+        <details key="java.member" value="multi"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multiNoOrphanRemoval" upperBound="-1"
+        eType="#//SubElement">
+      <eAnnotations source="org.eclipse.emf.texo">
+        <details key="java.member" value="multiNoOrphanRemoval"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multiContainment" upperBound="-1"
+        eType="#//SubElement" containment="true">
+      <eAnnotations source="org.eclipse.emf.texo">
+        <details key="java.member" value="multiContainment"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multiContainmentNoOrphanRemoval"
+        upperBound="-1" eType="#//SubElement" containment="true">
+      <eAnnotations source="org.eclipse.emf.texo">
+        <details key="java.member" value="multiContainmentNoOrphanRemoval"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SubElement"/>
+</ecore:EPackage>

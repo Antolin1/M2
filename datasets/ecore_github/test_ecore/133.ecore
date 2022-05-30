@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="virtioqueue" nsURI="http://www.virtio.org/virtioqueue" nsPrefix="virtioqueue">
+  <eClassifiers xsi:type="ecore:EClass" name="virtq">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="avail" upperBound="-1"
+        eType="#//virtq_avail"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="used" upperBound="-1" eType="#//virtq_used"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="desc" upperBound="-1" eType="#//virtq_desc"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="virtq_avail">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flags" lowerBound="1" eType="#//Word"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="idx" lowerBound="1" eType="#//Word"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ring" upperBound="-1" eType="#//Word"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Word"/>
+  <eClassifiers xsi:type="ecore:EClass" name="virtq_used_elem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="id" lowerBound="1" eType="#//DWord"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="len" eType="#//DWord" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DWord"/>
+  <eClassifiers xsi:type="ecore:EClass" name="virtq_desc">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="addr" lowerBound="1" eType="#//QWord"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="len" lowerBound="1" eType="#//DWord"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flags" lowerBound="1" eType="#//Word"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="next" lowerBound="1" eType="#//Word"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QWord"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Byte"/>
+  <eClassifiers xsi:type="ecore:EClass" name="virtq_used">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flags" lowerBound="1" eType="#//Word"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="idx" lowerBound="1" eType="#//Word"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ring" upperBound="-1" eType="#//virtq_used_elem"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VRING_DESC">
+    <eLiterals name="VRING_DESC_F_NEXT" value="1"/>
+    <eLiterals name="VRING_DESC_F_WRITE" value="2"/>
+    <eLiterals name="VRING_DESC_F_INDIRECT" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VIRTQ_SUPPORT">
+    <eLiterals name="VIRTQ_USED_F_NO_NOTIFY" value="1" literal="VIRTQ_USED_F_NO_NOTIFY"/>
+    <eLiterals name="VIRTQ_AVAIL_F_NO_INTERRUPT" value="1" literal="VIRTQ_AVAIL_F_NO_INTERRUPT"/>
+    <eLiterals name="VIRTIO_F_INDIRECT_DESC" value="28"/>
+    <eLiterals name="VIRTIO_F_EVENT_IDX" value="29"/>
+    <eLiterals name="VIRTIO_F_ANY_LAYOUT" value="27"/>
+  </eClassifiers>
+</ecore:EPackage>

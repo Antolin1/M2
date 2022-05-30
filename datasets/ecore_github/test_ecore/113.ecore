@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="JavaLibrary" nsURI="http:///JavaLibrary.ecore" nsPrefix="JavaLibrary">
+  <eClassifiers xsi:type="ecore:EDataType" name="char" instanceClassName="char"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="double" instanceClassName="double"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="float" instanceClassName="float"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="void" instanceClassName="void"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="long" instanceClassName="long"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="short" instanceClassName="short"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="boolean" instanceClassName="boolean"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="byte" instanceClassName="byte"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Integer" instanceClassName="Integer"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Byte" instanceClassName="Byte"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Double" instanceClassName="Double"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Short" instanceClassName="Short"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Float" instanceClassName="Float"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Long" instanceClassName="Long"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Character" instanceClassName="Character"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Boolean" instanceClassName="Boolean"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="int" instanceClassName="int"/>
+</ecore:EPackage>

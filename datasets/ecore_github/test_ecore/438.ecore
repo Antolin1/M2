@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ASACadabra" nsURI="http://www.example.org/ASACadabra" nsPrefix="ASACadabra">
+  <eClassifiers xsi:type="ecore:EClass" name="Composant">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interfaceFournie" lowerBound="1"
+        upperBound="-1" eType="#//InterfaceComposantFournie" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interfaceRequise" upperBound="-1"
+        eType="#//InterfaceComposantRequise" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="composant" upperBound="-1"
+        eType="#//Composant" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Connecteur">
+    <eOperations name="Glue">
+      <eParameters name="roleFournis" eType="#//RoleFournis"/>
+      <eParameters name="roleRequis" eType="#//RoleRequis"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roleFournis" lowerBound="1"
+        upperBound="-1" eType="#//RoleFournis" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roleRequis" lowerBound="1"
+        upperBound="-1" eType="#//RoleRequis" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Configuration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="composant" lowerBound="1"
+        upperBound="-1" eType="#//Composant" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connecteur" lowerBound="1"
+        upperBound="-1" eType="#//Connecteur" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interfaceconfiguration"
+        lowerBound="1" eType="#//InterfaceConfiguration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortComposantFournis"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ServicesComposantRequis"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InterfaceComposantRequise">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="servicesRequis" lowerBound="1"
+        upperBound="-1" eType="#//ServicesComposantRequis" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portRequis" lowerBound="1"
+        upperBound="-1" eType="#//PortComposantRequis" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleRequis"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LienAttachementPFRR">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1" eType="#//RoleRequis"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portcomposantfournis" lowerBound="1"
+        eType="#//PortComposantFournis" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LienBindingPRSR">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconfigurationRequis"
+        lowerBound="1" eType="#//PortConfigurationRequis" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="servicescomposantrequis"
+        lowerBound="1" eType="#//ServicesComposantRequis" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortConfigurationRequis"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InterfaceConfiguration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconfigurationRequis"
+        upperBound="-1" eType="#//PortConfigurationRequis" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconfigurationfournis"
+        lowerBound="1" upperBound="-1" eType="#//PortConfigurationFournis" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleFournis"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortComposantRequis"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ServicesComposantFournis"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LienAttachementPRRF">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portcomposantrequis" lowerBound="1"
+        eType="#//PortComposantRequis" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolefournis" lowerBound="1"
+        eType="#//RoleFournis" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InterfaceComposantFournie">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="servicesFournis" lowerBound="1"
+        upperBound="-1" eType="#//ServicesComposantFournis" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portFournis" lowerBound="1"
+        upperBound="-1" eType="#//PortComposantFournis" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortConfigurationFournis"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LienBindingPFSF">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconfigurationfournis"
+        lowerBound="1" eType="#//PortConfigurationFournis" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="servicescomposantfournis"
+        lowerBound="1" eType="#//ServicesComposantFournis" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

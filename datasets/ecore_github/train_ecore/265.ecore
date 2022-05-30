@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="m1" nsURI="http://www.example.org/m1" nsPrefix="model">
+  <eClassifiers xsi:type="ecore:EClass" name="Client" instanceClassName="Component">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portclient" upperBound="-1"
+        eType="#//PortClient" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RPC" instanceTypeName="Connector">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolerpc" upperBound="-1"
+        eType="#//RoleRPC" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gluerpc" upperBound="-1"
+        eType="#//GlueRPC" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Serveur" instanceClassName="Component">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serverconf" upperBound="-1"
+        eType="#//ServerConf" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="System" instanceClassName="Configuration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rpc" upperBound="-1" eType="#//RPC"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serveur" upperBound="-1"
+        eType="#//Serveur" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="client" upperBound="-1"
+        eType="#//Client" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="liensysteme" upperBound="-1"
+        eType="#//LienSysteme" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portsysteme" upperBound="-1"
+        eType="#//PortSysteme" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortClient"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortClientRequis" eSuperTypes="#//PortClient"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortclientFourni" eSuperTypes="#//PortClient"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleRPC"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleRPCFourni" eSuperTypes="#//RoleRPC"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GlueRPC">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolerpcrequis" eType="#//RoleRPCRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolerpcfourni" eType="#//RoleRPCFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleRPCRequis" eSuperTypes="#//RoleRPC"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ServerConf" instanceClassName="Configuration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconf" upperBound="-1"
+        eType="#//PortConf" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portserveur" upperBound="-1"
+        eType="#//PortServeur" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lienserveurconf" upperBound="-1"
+        eType="#//LienServeurConf" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortConf"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortConfFourni" eSuperTypes="#//PortConf"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortConfRequis" eSuperTypes="#//PortConf"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Lien"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BindingRequis" eSuperTypes="#//Binding"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Binding"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BindingFourni" eSuperTypes="#//Binding"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortServeur"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortServeurRequis" eSuperTypes="#//PortServeur"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortServeurFournis" eSuperTypes="#//PortServeur"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LienSysteme"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BindingSysteme" eSuperTypes="#//LienSysteme"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AttachementSysteme" eSuperTypes="#//LienSysteme"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortSysteme"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortSystemeRequis" eSuperTypes="#//PortSysteme"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortSystemeFourni" eSuperTypes="#//PortSysteme"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_Client_RPC" eSuperTypes="#//AttachementSysteme">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portclientfourni" eType="#//PortclientFourni"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolerpcrequis" eType="#//RoleRPCRequis"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_RPC_Serveur" eSuperTypes="#//AttachementSysteme">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolerpcfourni" eType="#//RoleRPCFourni"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portserveurrequis" eType="#//PortServeurRequis"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnexionManager" instanceClassName="Component">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconnexion" upperBound="-1"
+        eType="#//PortConnexion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortConnexion"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortConnexionRequis" eSuperTypes="#//PortConnexion"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortConnexionFourni" eSuperTypes="#//PortConnexion"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SecurityManager" instanceClassName="Component">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portsecurity" upperBound="-1"
+        eType="#//PortSecurity" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortSecurity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortSecurityRequis" eSuperTypes="#//PortSecurity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortSecurityFourni" eSuperTypes="#//PortSecurity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Database" instanceClassName="Component">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portdatabase" upperBound="-1"
+        eType="#//PortDatabase" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortDatabase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortDatabaseRequis" eSuperTypes="#//PortDatabase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortDatabaseFourni" eSuperTypes="#//PortDatabase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnecteurConnectionSecuriry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecs" upperBound="-1"
+        eType="#//RoleCS" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gluecs" upperBound="-1"
+        eType="#//GlueCS" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GlueCS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsrequis" eType="#//RoleCSRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsfourni" eType="#//RoleCSFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleCS"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleCSRequis" eSuperTypes="#//RoleCS"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleCSFourni" eSuperTypes="#//RoleCS"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleSCRequis" eSuperTypes="#//RoleSC"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnecteurSecurityConnexion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecs" upperBound="-1"
+        eType="#//RoleSC" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gluecs" upperBound="-1"
+        eType="#//GlueSC" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleSC"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleSCFourni" eSuperTypes="#//RoleSC"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GlueSC">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsrequis" eType="#//RoleSCRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsfourni" eType="#//RoleSCFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleCDRequis" eSuperTypes="#//RoleCD"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnecteurConnexionDatabase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecs" upperBound="-1"
+        eType="#//RoleCD" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gluecs" upperBound="-1"
+        eType="#//GlueCD" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleCD"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleCDFourni" eSuperTypes="#//RoleCD"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GlueCD">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsrequis" eType="#//RoleCDRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsfourni" eType="#//RoleCDFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleDCRequis" eSuperTypes="#//RoleDC"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnecteurDatabaseConnexion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecs" upperBound="-1"
+        eType="#//RoleDC" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gluecs" upperBound="-1"
+        eType="#//GlueDC" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleDC"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleDCFourni" eSuperTypes="#//RoleDC"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GlueDC">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsrequis" eType="#//RoleDCRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsfourni" eType="#//RoleDCFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleSDRequis" eSuperTypes="#//RoleSD"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnecteurSecurityDatabase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecs" upperBound="-1"
+        eType="#//RoleSD" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gluecs" upperBound="-1"
+        eType="#//GlueSD" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleSD"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleSDFourni" eSuperTypes="#//RoleSD"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GlueSD">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsrequis" eType="#//RoleSDRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsfourni" eType="#//RoleSDFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleDSRequis" eSuperTypes="#//RoleDS"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnecteurDatabaseSecurity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecs" upperBound="-1"
+        eType="#//RoleDS" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gluecs" upperBound="-1"
+        eType="#//GlueDS" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleDS"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleDSFourni" eSuperTypes="#//RoleDS"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GlueDS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsrequis" eType="#//RoleDSRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsfourni" eType="#//RoleDSFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LienServeurConf"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BindingServeurConf" eSuperTypes="#//LienServeurConf"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BindingServeurConfRequis" eSuperTypes="#//BindingServeurConf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconnexionrequis" eType="#//PortConnexionRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconfrequis" eType="#//PortConfRequis"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BindingServeurConfFourni" eSuperTypes="#//BindingServeurConf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconnexionfourni" eType="#//PortConnexionFourni"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconffourni" eType="#//PortConfFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttachementServeurConf" eSuperTypes="#//LienServeurConf"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_Connexion_Connecteur1" eSuperTypes="#//AttachementServeurConf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconnexionrequis" eType="#//PortConnexionRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsfourni" eType="#//RoleCSFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_Connecteur_Connexion1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecsrequis" eType="#//RoleCSRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconnexionfourni" eType="#//PortConnexionFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_Security_Connecteur1" eSuperTypes="#//AttachementServeurConf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolescfourni" eType="#//RoleSCFourni"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portsecurityrequis" eType="#//PortSecurityRequis"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_Connecteur_Security1" eSuperTypes="#//AttachementServeurConf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolescrequis" eType="#//RoleSCRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portsecurityfourni" eType="#//PortSecurityFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_Security_Connecteur2" eSuperTypes="#//AttachementServeurConf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portsecurityrequis" eType="#//PortSecurityRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolesdfourni" eType="#//RoleSDFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_Connecteur_Security2" eSuperTypes="#//AttachementServeurConf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portsecurityfourni" eType="#//PortSecurityFourni"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolesdrequis" eType="#//RoleSDRequis"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_Database_Connecteur1" eSuperTypes="#//AttachementServeurConf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portdatabaserequis" eType="#//PortDatabaseRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roledsfourni" eType="#//RoleDSFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_Connecteur_Database" eSuperTypes="#//AttachementServeurConf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roledsrequis" eType="#//RoleDSRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portdatabasefourni" eType="#//PortDatabaseFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_Database_Connecteur2" eSuperTypes="#//AttachementServeurConf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portdatabaserequis" eType="#//PortDatabaseRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecdfourni" eType="#//RoleCDFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_Connecteur_Database2" eSuperTypes="#//AttachementServeurConf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rolecdrequis" eType="#//RoleCDRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portdatabasefourni" eType="#//PortDatabaseFourni"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_Connexion_Connecteur2" eSuperTypes="#//AttachementServeurConf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconnexionfourni" eType="#//PortConnexionFourni"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roledcrequis" eType="#//RoleDCRequis"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachement_Connecteur_Connexion2" eSuperTypes="#//AttachementServeurConf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portconnexionrequis" eType="#//PortConnexionRequis"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roledcfourni" eType="#//RoleDCFourni"/>
+  </eClassifiers>
+</ecore:EPackage>

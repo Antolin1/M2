@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="bz369931"
+    nsURI="http://www.eclipse.org/emf/texo/test/model/issues/bz369931" nsPrefix="bz369931">
+  <eClassifiers xsi:type="ecore:EClass" name="Formula">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="formulaType" eType="#//FormulaType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FormulaType">
+    <eLiterals name="SIMPLE"/>
+    <eLiterals name="ADVANCED" value="1"/>
+  </eClassifiers>
+</ecore:EPackage>

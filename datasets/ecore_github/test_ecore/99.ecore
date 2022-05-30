@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="testbidirectionalrelation" nsURI="http://testbidirectionalrelation"
+    nsPrefix="testbidirectionalrelation">
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptA">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptb" upperBound="-1"
+        eType="#//ConceptB" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptc" upperBound="-1"
+        eType="#//ConceptC" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptd" upperBound="-1"
+        eType="#//ConceptD" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concepte" upperBound="-1"
+        eType="#//ConceptE" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptf" upperBound="-1"
+        eType="#//ConceptF" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptg" upperBound="-1"
+        eType="#//ConceptG" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptB">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptc" eType="#//ConceptC"
+        eOpposite="#//ConceptC/conceptb"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptC">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptb" eType="#//ConceptB"
+        eOpposite="#//ConceptB/conceptc"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptD">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concepte" eType="#//ConceptE"
+        eOpposite="#//ConceptE/conceptd"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptE">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptd" upperBound="-1"
+        eType="#//ConceptD" eOpposite="#//ConceptD/concepte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptF">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptg" upperBound="-1"
+        eType="#//ConceptG" eOpposite="#//ConceptG/conceptf"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptG">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptf" upperBound="-1"
+        eType="#//ConceptF" eOpposite="#//ConceptF/conceptg"/>
+  </eClassifiers>
+</ecore:EPackage>

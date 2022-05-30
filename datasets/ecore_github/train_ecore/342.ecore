@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="android"
+    nsURI="http://android/1.0" nsPrefix="android">
+  <eClassifiers xsi:type="ecore:EClass" name="Activity" instanceClassName="android.app.Activity"
+      eSuperTypes="#//ApplicationKind">
+    <eOperations name="onCreate">
+      <eParameters name="savedInstanceState" eType="#//Bundle"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="acLabel" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="screen" lowerBound="1"
+        eType="#//View" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="intentFilter" eType="#//IntentFilter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extends" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onCreateCode" eType="#//ExecuteCode"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Receiver" instanceClassName="android.content.BroadcastReceiver"
+      eSuperTypes="#//ApplicationKind">
+    <eOperations name="onReceive">
+      <eParameters name="context" eType="#//Context"/>
+      <eParameters name="intent" eType="#//Intent"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="intentFilter" eType="#//IntentFilter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extends" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onReceiveCode" eType="#//ExecuteCode"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="View">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout" lowerBound="1"
+        eType="#//LinearLayout" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Widget">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextButton" eSuperTypes="#//Widget">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="btnLabel" eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextLabel" eSuperTypes="#//Widget">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextField" eSuperTypes="#//Widget">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Action">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SMS_send" eSuperTypes="#//Action"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecuteCode" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lines" upperBound="-1"
+        eType="#//Line" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importRequire" eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SMS_Reseived" eSuperTypes="#//Action"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Application">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" upperBound="-1"
+        eType="#//Right" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contains" lowerBound="1"
+        upperBound="-1" eType="#//ApplicationKind" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntentFilter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//Action"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="category" eType="#//Category"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Launcher" eSuperTypes="#//Category"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Category">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Main" eSuperTypes="#//Action"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LinearLayout">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//Widget" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="orientation" eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="String" instanceClassName="java.lang.String"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Right">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Bundle" instanceClassName="android.os.Bundle"
+      serializable="false"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Context" instanceClassName="android.content.Context"
+      serializable="false"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Intent" instanceClassName="android.content.Intent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ApplicationKind"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Line">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentLine" eType="#//String"/>
+  </eClassifiers>
+</ecore:EPackage>

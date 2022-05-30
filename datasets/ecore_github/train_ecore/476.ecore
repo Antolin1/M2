@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="testenums" nsURI="http://testenums.testenums.testenums/" nsPrefix="testenums">
+  <eClassifiers xsi:type="ecore:EClass" name="Root">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enum" eType="//Enum1" defaultValueLiteral="LITERAL0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enums" upperBound="-1" eType="//Enum1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Enum1">
+    <eLiterals name="LITERAL0"/>
+    <eLiterals name="LITERAL1" value="1"/>
+  </eClassifiers>
+</ecore:EPackage>

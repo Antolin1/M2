@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="GenericTracemetamodel" nsURI="GenericTracemetamodel" nsPrefix="GenericTracemetamodel">
+  <eClassifiers xsi:type="ecore:EClass" name="Trace">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="step" upperBound="-1" eType="#//Step"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="state" upperBound="-1"
+        eType="#//State" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parametervalue" upperBound="-1"
+        eType="#//Parametervalue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tracedobject" upperBound="-1"
+        eType="#//TracedObject" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//Value" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="steptype" upperBound="-1"
+        eType="#//StepType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Step">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Step" containment="true" eOpposite="#//Step/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Step"
+        eOpposite="#//Step/children"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="state" upperBound="-1"
+        eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parametervalue" upperBound="-1"
+        eType="#//Parametervalue"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="steptype" lowerBound="1"
+        eType="#//StepType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objectstate" upperBound="-1"
+        eType="#//Objectstate" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TracedObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Parametervalue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//Value"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="DirectionKind" eType="#//ParamterKindEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Value" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Refvalue" eSuperTypes="#//Value"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Literalvalue" eSuperTypes="#//Value"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Objectstate">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//Value"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tracedobject" eType="#//TracedObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ParamterKindEnum">
+    <eLiterals name="IN" value="1"/>
+    <eLiterals name="INOUT" value="2" literal="INOUT"/>
+    <eLiterals name="OUT" value="3"/>
+    <eLiterals name="RETURN" value="4" literal="RETURN"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StepType"/>
+</ecore:EPackage>

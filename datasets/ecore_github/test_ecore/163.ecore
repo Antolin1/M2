@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="testPackage" nsURI="http://testPackage" nsPrefix="testPackage">
+  <eClassifiers xsi:type="ecore:EClass" name="SuperSuperClass"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FirstSuperClass" eSuperTypes="MultipathHierarchy.ecore#//SuperSuperClass"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SecondSuperClass" eSuperTypes="MultipathHierarchy.ecore#//SuperSuperClass"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DerivedClass" eSuperTypes="MultipathHierarchy.ecore#//FirstSuperClass MultipathHierarchy.ecore#//SecondSuperClass"/>
+</ecore:EPackage>

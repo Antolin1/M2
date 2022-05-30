@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="theoryoflists" nsURI="eu.modelwriter.examples.theoryoflists"
+    nsPrefix="tol">
+  <eAnnotations source="http://www.modelwriter.eu/alloyinecore/source">
+    <details key="source" value="package theoryoflists: tol= 'eu.modelwriter.examples.theoryoflists'{&#xA;  public class Object [2] {}&#xA;    &#xA;  public class List [6]{&#xA;&#x9; property car : Object [?];&#xA;&#x9; property cdr : List [?];&#xA;&#x9; property eq : List [*];&#xA;&#x9; &#x9; &#xA;&#x9; invariant: all a, b: List | a in b.eq iff (a.car = b.car and a.cdr in b.cdr.eq);&#x9;&#xA;  }&#xA;&#x9; &#xA;  public class one Nil extends List {&#xA;&#x9; invariant : no Nil.car;&#xA;&#x9; invariant : no Nil.cdr;&#xA;&#x9; invariant : all l: List - Nil | some l.cdr &amp;&amp; some l.car;&#xA;&#x9; invariant : all l: List | Nil in l.*cdr;&#xA;  }&#xA;&#x9;&#xA;  private class Memory {&#xA;&#x9; property objects : Object [*] {composes}; &#xA;&#x9; property lists : List [*] {composes}; &#x9;&#xA;  }&#xA;&#x9;&#xA;}&#xA;&#xA;"/>
+    <details key="source_hash" value="-106680389"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Object">
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/visibility">
+      <details key="visibility" value="public"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/reasoning/lowerscope">
+      <details key="lowerscope" value="2"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/reasoning/upperincluded">
+      <details key="lowerincluded" value="["/>
+    </eAnnotations>
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/reasoning/lowerincluded">
+      <details key="upperincluded" value="]"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="List">
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/visibility">
+      <details key="visibility" value="public"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/reasoning/lowerscope">
+      <details key="lowerscope" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/reasoning/upperincluded">
+      <details key="lowerincluded" value="["/>
+    </eAnnotations>
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/reasoning/lowerincluded">
+      <details key="upperincluded" value="]"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/expression/invariant">
+      <details key="callable" value="false"/>
+      <details key="formula" value="all a, b: List | a in b.eq iff (a.car = b.car and a.cdr in b.cdr.eq)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="car" ordered="false" eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cdr" ordered="false" eType="#//List"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eq" ordered="false" upperBound="-1"
+        eType="#//List"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Nil" eSuperTypes="#//List">
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/visibility">
+      <details key="visibility" value="public"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/cardinality">
+      <details key="cardinality" value="one"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/expression/invariant">
+      <details key="callable" value="false"/>
+      <details key="formula" value="no Nil.car"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/expression/invariant">
+      <details key="callable" value="false"/>
+      <details key="formula" value="no Nil.cdr"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/expression/invariant">
+      <details key="callable" value="false"/>
+      <details key="formula" value="all l: List - Nil | some l.cdr &amp;&amp; some l.car"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/expression/invariant">
+      <details key="callable" value="false"/>
+      <details key="formula" value="all l: List | Nil in l.*cdr"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Memory">
+    <eAnnotations source="http://www.modelwriter.eu/alloyinecore/visibility">
+      <details key="visibility" value="private"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objects" ordered="false"
+        upperBound="-1" eType="#//Object" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lists" ordered="false"
+        upperBound="-1" eType="#//List" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

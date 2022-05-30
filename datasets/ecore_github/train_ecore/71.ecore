@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Bz420913" nsURI="http://www.eclipse.org/emf/texo/test/model/issues/bz420913"
+    nsPrefix="Bz420913">
+  <eClassifiers xsi:type="ecore:EClass" name="Bz420913_O">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="singleBidirectional" eType="#//Bz420913_T"
+        eOpposite="#//Bz420913_T/singleBidirectional"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multiBidirectional" upperBound="-1"
+        eType="#//Bz420913_T" eOpposite="#//Bz420913_T/multiBidirectional"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multiMultiBidirectional"
+        upperBound="-1" eType="#//Bz420913_T" eOpposite="#//Bz420913_T/multiMultiBidirectional"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bz420913_T">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="singleBidirectional" eType="#//Bz420913_O"
+        eOpposite="#//Bz420913_O/singleBidirectional"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multiBidirectional" eType="#//Bz420913_O"
+        eOpposite="#//Bz420913_O/multiBidirectional"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multiMultiBidirectional"
+        upperBound="-1" eType="#//Bz420913_O" eOpposite="#//Bz420913_O/multiMultiBidirectional"/>
+  </eClassifiers>
+</ecore:EPackage>

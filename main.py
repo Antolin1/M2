@@ -63,7 +63,7 @@ if __name__ == '__main__':
     parser.add_argument('--seed', help='seed.', type=int, default=123)
     parser.add_argument('--hidden_dim', help='Hidden dimension of the neural model.', type=int, default=64)
     parser.add_argument('--k', help='Montecarlo iterations.', type=int, default=10)
-    parser.add_argument('--epochs', type=int, default=25)
+    parser.add_argument('--epochs', type=int, default=10)
     parser.add_argument('--lr', default=0.001)
     parser.add_argument('--batch_size', default=128, type=int)
     parser.add_argument('--model_path', default='models/yakindu_exercise')

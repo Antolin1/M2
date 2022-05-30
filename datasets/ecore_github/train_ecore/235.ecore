@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="case5"
+    nsURI="http://www.isoe.lgi2p.ema.fr/gmf/example/case5" nsPrefix="case5">
+  <eClassifiers xsi:type="ecore:EClass" name="D" eSuperTypes="#//T">
+    <eAnnotations source="gmf">
+      <details key="node"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="N">
+    <eAnnotations source="gmf">
+      <details key="canvas"/>
+      <details key="node"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ts" upperBound="-1" eType="#//T"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="as" upperBound="-1" eType="#//A"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bs" upperBound="-1" eType="#//B"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="T">
+    <eAnnotations source="gmf">
+      <details key="node" value=""/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="A">
+    <eAnnotations source="gmf">
+      <details key="node"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="d" eType="#//D"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="B">
+    <eAnnotations source="gmf">
+      <details key="node" value=""/>
+      <details key="reference=ds"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ds" upperBound="-1" eType="#//D"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="E" eSuperTypes="#//D">
+    <eAnnotations source="gmf">
+      <details key="node" value=""/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

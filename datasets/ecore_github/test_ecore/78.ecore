@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SymmetricKeyCrypto" nsURI="http://www.example.org/SymmetricKeyCrypto"
+    nsPrefix="SymmetricKeyCrypto">
+  <eClassifiers xsi:type="ecore:EClass" name="SymmetricKeyFunction">
+    <eOperations name="encrypt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"
+        eExceptions="#//InvalidKeyException #//InvalidAlgortihmParameterException #//NoSuchAlgorithmException #//NoSuchPaddingException #//IllegalBlockSizeException #//BadPaddingException">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="IvParameterSpec ivspec = new IvParameterSpec(IV);&#xD;&#xA;String algorithm = cipher.getAlgorithm();&#xD;&#xA;algorithm = algorithm.substring(0, algorithm.indexOf(&quot;/&quot;));&#xD;&#xA;SecretKeySpec skeySpec = new SecretKeySpec(key, algorithm);&#xD;&#xA;&#xD;&#xA;// initialize the cipher for encrypt mode&#xD;&#xA;cipher.init(Cipher.ENCRYPT_MODE, skeySpec, ivspec);&#xD;&#xA;&#xD;&#xA;// encrypt the message&#xD;&#xA;byte[] encrypted = cipher.doFinal(plaintext);&#xD;&#xA;        &#xD;&#xA;return encrypted;"/>
+      </eAnnotations>
+      <eParameters name="plaintext" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+      <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+      <eParameters name="IV" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    </eOperations>
+    <eOperations name="generateCipherObject" eType="#//Cipher" eExceptions="#//NoSuchAlgorithmException #//NoSuchPaddingException">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="//Select symmetric key algorithm with block cipher mode and padding&#xD;&#xA;cipher = Cipher.getInstance(algorithm.getLiteral() + &quot;/&quot; + cipher_mode.getLiteral() + &quot;/&quot; + padding.getLiteral());&#xD;&#xA;&#xD;&#xA;return cipher;"/>
+      </eAnnotations>
+      <eParameters name="algorithm" eType="#//Algorithm"/>
+      <eParameters name="cipher_mode" eType="#//Cipher_Mode"/>
+      <eParameters name="padding" eType="#//Padding"/>
+    </eOperations>
+    <eOperations name="decrypt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"
+        eExceptions="#//InvalidKeyException #//InvalidAlgortihmParameterException #//NoSuchAlgorithmException #//NoSuchPaddingException #//IllegalBlockSizeException #//BadPaddingException">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="IvParameterSpec ivspec = new IvParameterSpec(IV);&#xD;&#xA;String algorithm = cipher.getAlgorithm();&#xD;&#xA;algorithm = algorithm.substring(0, algorithm.indexOf(&quot;/&quot;));&#xD;&#xA;SecretKeySpec skeySpec = new SecretKeySpec(key, algorithm);&#xD;&#xA;&#xD;&#xA;// initialize the cipher for decryptmode&#xD;&#xA;cipher.init(Cipher.DECRYPT_MODE, skeySpec, ivspec);&#xD;&#xA;&#xD;&#xA;// decrypt the message&#xD;&#xA;byte[] decrypted = cipher.doFinal(ciphertext);&#xD;&#xA;        &#xD;&#xA;return decrypted;"/>
+      </eAnnotations>
+      <eParameters name="ciphertext" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+      <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+      <eParameters name="IV" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cipher" eType="#//Cipher"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="InvalidKeyException" instanceClassName="java.security.InvalidKeyException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="InvalidAlgortihmParameterException"
+      instanceClassName="java.security.InvalidAlgorithmParameterException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="NoSuchAlgorithmException" instanceClassName="java.security.NoSuchAlgorithmException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="NoSuchPaddingException" instanceClassName="javax.crypto.NoSuchPaddingException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="IllegalBlockSizeException" instanceClassName="javax.crypto.IllegalBlockSizeException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BadPaddingException" instanceClassName="javax.crypto.BadPaddingException"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Algorithm" instanceTypeName="Algorithm">
+    <eLiterals name="DES"/>
+    <eLiterals name="AES" value="1" literal="AES"/>
+    <eLiterals name="Blowfish" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Cipher_Mode">
+    <eLiterals name="ECB"/>
+    <eLiterals name="CBC" value="1"/>
+    <eLiterals name="OFB" value="2"/>
+    <eLiterals name="CTR" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Padding">
+    <eLiterals name="NoPadding"/>
+    <eLiterals name="PKCS1Padding" value="1"/>
+    <eLiterals name="OAEPWithSHA_1AndMGF1Padding" value="2" literal="OAEPWithSHA-1AndMGF1Padding"/>
+    <eLiterals name="OAEPWithSHA_256AndMGF1Padding" value="3" literal="OAEPWithSHA-256AndMGF1Padding"/>
+    <eLiterals name="PKCS5Padding" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Cipher" instanceClassName="javax.crypto.Cipher"/>
+</ecore:EPackage>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="VxADL" nsURI="VxADL" nsPrefix="VxADL">
+  <eClassifiers xsi:type="ecore:EClass" name="VxADLElt"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Stakeholder">
+    <eLiterals name="Architect"/>
+    <eLiterals name="Deployer" value="1"/>
+    <eLiterals name="DomainExpert" value="2" literal="DomainExpert"/>
+    <eLiterals name="Integrator" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Viewpoint">
+    <eLiterals name="Deployment"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Concern">
+    <eLiterals name="Mapping"/>
+    <eLiterals name="Variability"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ModelKind">
+    <eLiterals name="DeploymentModel"/>
+    <eLiterals name="VarModel" value="2"/>
+  </eClassifiers>
+</ecore:EPackage>

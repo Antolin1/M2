@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="RobyOneKenoby" nsURI="http://rok" nsPrefix="rok">
+  <eClassifiers xsi:type="ecore:EClass" name="LanguageElmt" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Test" abstract="true" eSuperTypes="#//LanguageElmt"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RobyLanguage" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="languageelmt" upperBound="-1"
+        eType="#//LanguageElmt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Order" abstract="true" eSuperTypes="#//LanguageElmt"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition" abstract="true" eSuperTypes="#//LanguageElmt">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="test" lowerBound="1" eType="#//Test"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="If" eSuperTypes="#//Condition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="While" eSuperTypes="#//Condition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Not" eSuperTypes="#//Test">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="test" lowerBound="1" eType="#//Test"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//Test">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="test" lowerBound="2" upperBound="2"
+        eType="#//Test" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Obstacle" eSuperTypes="#//Test"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HasTurned" eSuperTypes="#//Test"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NewEClass12" eSuperTypes="#//Order"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NewEClass13" eSuperTypes="#//Order"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NewEClass14" eSuperTypes="#//Order"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NewEClass15" eSuperTypes="#//Order"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NewEClass16" eSuperTypes="#//Order"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NewEClass17" eSuperTypes="#//Order"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NewEClass18" eSuperTypes="#//Order"/>
+</ecore:EPackage>
