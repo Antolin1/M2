@@ -105,9 +105,9 @@ def node_match(n1, n2):
 def evaluate(pallete, args):
     with open(f'{args.model_path}/pallete.json') as f:
         pallete.from_json(json.load(f))
-    if 'yakindu' in args.metamodel:
+    if 'yakindu' in args.metamodel.lower():
         inconsistent = inconsistent_yakindu
-    elif 'ecore' in args.metamodel:
+    elif 'ecore' in args.metamodel.lower():
         inconsistent = inconsistent_ecore
     training_files = glob.glob(f'{args.training_dataset}/*')
     training_graphs = [get_graph_from_model(f, [args.metamodel]) for f in
@@ -125,8 +125,12 @@ def evaluate(pallete, args):
     logger.info(f'Loaded a test dataset of {len(generated_graphs)} elements')
 
     consistent_models = [g for g in generated_graphs if not inconsistent(g)]
-    # TODO: check this, inconsistency = 0 ? I don't think so...
+    consistent_models_training = [g for g in training_graphs if not inconsistent(g)]
+    consistent_models_test = [g for g in test_graphs if not inconsistent(g)]
+
     logger.info(f'Proportion of consistent models {len(consistent_models) / len(generated_graphs)}')
+    logger.info(f'Proportion of consistent models train {len(consistent_models_training) / len(training_graphs)}')
+    logger.info(f'Proportion of consistent models test {len(consistent_models_test) / len(test_graphs)}')
 
     iso = []
     for s in generated_graphs:

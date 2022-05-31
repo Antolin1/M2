@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ecore_simplified:EPackage xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore_simplified="http://www.example.org/ecore_simplified" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <eClassifiers xsi:type="ecore_simplified:EClass">
-    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.1/@eStructuralFeatures.0" eType="//@eClassifiers.1"/>
-    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.1/@eStructuralFeatures.1" eType="//@eClassifiers.1"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.1" eOpposite="//@eClassifiers.1/@eStructuralFeatures.0"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.1" eOpposite="//@eClassifiers.1/@eStructuralFeatures.1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore_simplified:EClass">
-    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.0/@eStructuralFeatures.0" eType="//@eClassifiers.0"/>
-    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.0/@eStructuralFeatures.1" eType="//@eClassifiers.0"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.0" eOpposite="//@eClassifiers.0/@eStructuralFeatures.0"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.0" eOpposite="//@eClassifiers.0/@eStructuralFeatures.1"/>
   </eClassifiers>
 </ecore_simplified:EPackage>

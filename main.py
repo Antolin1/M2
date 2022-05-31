@@ -13,6 +13,7 @@ from m2_generator.model2graph.model2graph import get_graph_from_model
 from m2_generator.neural_model.training_generation_evaluation import train_generator, generation, evaluate
 from tests.test_neural_model import get_complex_add_transition_edit_operation, \
     get_complex_add_region_with_entry_operation
+from complex_edit_operations.ecore import *
 
 logger = logging.getLogger(__name__)
 
@@ -49,6 +50,13 @@ def get_pallete(args):
             ed2 = get_complex_add_region_with_entry_operation()
             pallete.add_complex_edit_operation(ed1)
             pallete.add_complex_edit_operation(ed2)
+        elif 'ecore' in args.metamodel.lower():
+            ed1 = get_complex_reference()
+            ed2 = get_complex_reference_eopposite()
+            ed3 = get_complex_eattribute()
+            pallete.add_complex_edit_operation(ed1)
+            pallete.add_complex_edit_operation(ed2)
+            pallete.add_complex_edit_operation(ed3)
     return pallete
 
 

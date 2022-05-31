@@ -11,7 +11,7 @@ def node_match(n1, n2):
 def has_cycles(G):
     eclasses = []
     for n in G:
-        if (G.nodes[n]['type'] == 'EClass'):
+        if G.nodes[n]['type'] == 'EClass':
             eclasses.append(n)
 
     remove = []

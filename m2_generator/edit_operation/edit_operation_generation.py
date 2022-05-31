@@ -51,12 +51,12 @@ def generate_atomic_second_type(reference, classes):
     pattern.add_node(1, type=[s.name for s in targets], ids={1})
     pattern.add_edge(0, 1, type=reference.name)
     patterns.append(pattern)
-    intersection = [x for x in sources if x in targets]
-    if intersection:
-        pattern_it = nx.MultiDiGraph()
-        pattern_it.add_node(0, type=[s.name for s in intersection], ids={0, 1})
-        pattern_it.add_edge(0, 0, type=reference.name)
-        patterns.append(pattern_it)
+    # intersection = [x for x in sources if x in targets]
+    # if intersection:
+    #    pattern_it = nx.MultiDiGraph()
+    #    pattern_it.add_node(0, type=[s.name for s in intersection], ids={0, 1})
+    #    pattern_it.add_edge(0, 0, type=reference.name)
+    #    patterns.append(pattern_it)
     return [EditOperation(patterns, ids=[0, 1], name=f'Add {reference.name}', type='second')]
 
 

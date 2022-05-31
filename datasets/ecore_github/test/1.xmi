@@ -11,7 +11,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.32 //@eClassifiers.30 //@eClassifiers.33"/>
   <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.28">
-    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.11" eOpposite="//@eClassifiers.11/@eStructuralFeatures.0"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.11/@eStructuralFeatures.0" eType="//@eClassifiers.11"/>
     <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.11"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.22 //@eClassifiers.27">
@@ -25,7 +25,7 @@
     <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore_simplified:EClass" eSuperTypes="//@eClassifiers.23 //@eClassifiers.24 //@eClassifiers.17 //@eClassifiers.26">
-    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eType="//@eClassifiers.5" eOpposite="//@eClassifiers.5/@eStructuralFeatures.0"/>
+    <eStructuralFeatures xsi:type="ecore_simplified:EReference" eOpposite="//@eClassifiers.5/@eStructuralFeatures.0" eType="//@eClassifiers.5"/>
     <eStructuralFeatures xsi:type="ecore_simplified:EAttribute" eType="//@eClassifiers.15"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore_simplified:EDataType"/>

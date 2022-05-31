@@ -168,6 +168,8 @@ class Pallete:
         for p1 in edit_operation.patterns:
             for e in self.atomic_edit_operations:
                 for p in e.patterns:
+                    # TODO: distinguish between first and second type as it is done in edit operations
+                    # TODO: in fact, eSupertype is not reordered (in the case of ecore)
                     GM = DiGraphMatcher(p1, p, node_match=node_match_list,
                                         edge_match=edge_match)
                     if len(list(GM.subgraph_isomorphisms_iter())) > 0:
