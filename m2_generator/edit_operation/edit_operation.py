@@ -42,6 +42,7 @@ def multi_to_mono_graph(g):
 
 
 def edge_match_second_type(e1, e2):
+    print('hola')
     return e2['type'] in e1['type']
 
 
@@ -75,12 +76,16 @@ def remove_edit_pattern(pat, G, type):
         GM = DiGraphMatcher(new_G, pat_en, node_match=node_match,
                             edge_match=edge_match)
     elif type == 'second':
-        GM = DiGraphMatcher(multi_to_mono_graph(new_G), nx.DiGraph(pat_en), node_match=node_match,
-                            edge_match=edge_match_second_type)
-    dics = []
-    for subgraph in GM.subgraph_isomorphisms_iter():
-        dics.append(subgraph)
-        # break
+        #GM = DiGraphMatcher(multi_to_mono_graph(new_G), nx.DiGraph(pat_en), node_match=node_match,
+                            #edge_match=edge_match_second_type)
+        isos = iso_second_type(new_G, pat_en)
+    if type == 'first':
+        dics = []
+        for subgraph in GM.subgraph_isomorphisms_iter():
+            dics.append(subgraph)
+    elif type == 'second':
+        dics = isos
+
     ##No match, return none
     if len(dics) == 0:
         return None
@@ -119,6 +124,20 @@ def remove_edit_pattern(pat, G, type):
         new_G.nodes[b]['ids'] = pat_en.nodes[chosen[b]]['ids']
 
     return new_G
+
+
+def iso_second_type(G, pat):
+    s_pat, t_pat, d_pat = list(pat.edges(data=True))[0]
+    ty = d_pat['type']
+    isos = []
+    for s, t, d in G.edges(data=True):
+        correspondence = {}
+        if d['type'] == ty and G.nodes[s]['type'] in pat.nodes[s_pat]['type'] \
+                and G.nodes[t]['type'] in pat.nodes[t_pat]['type']:
+            correspondence[s] = s_pat
+            correspondence[t] = t_pat
+            isos.append(correspondence)
+    return isos
 
 
 class EditOperation:

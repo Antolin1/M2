@@ -8,12 +8,11 @@ import numpy as np
 import torch
 from prettytable import PrettyTable
 
+from complex_edit_operations.ecore import *
+from complex_edit_operations.yakindu import *
 from m2_generator.edit_operation.pallete import Pallete
 from m2_generator.model2graph.model2graph import get_graph_from_model
 from m2_generator.neural_model.training_generation_evaluation import train_generator, generation, evaluate
-from tests.test_neural_model import get_complex_add_transition_edit_operation, \
-    get_complex_add_region_with_entry_operation
-from complex_edit_operations.ecore import *
 
 logger = logging.getLogger(__name__)
 

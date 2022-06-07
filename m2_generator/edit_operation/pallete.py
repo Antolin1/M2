@@ -1,7 +1,7 @@
 import json
 
 import networkx as nx
-from networkx.algorithms.isomorphism import is_isomorphic, DiGraphMatcher
+from networkx.algorithms.isomorphism import is_isomorphic
 
 from m2_generator.edit_operation.edit_operation import edge_match, EditOperation
 from m2_generator.edit_operation.edit_operation_generation import get_edit_operations
@@ -168,11 +168,7 @@ class Pallete:
         for p1 in edit_operation.patterns:
             for e in self.atomic_edit_operations:
                 for p in e.patterns:
-                    # TODO: distinguish between first and second type as it is done in edit operations
-                    # TODO: in fact, eSupertype is not reordered (in the case of ecore)
-                    GM = DiGraphMatcher(p1, p, node_match=node_match_list,
-                                        edge_match=edge_match)
-                    if len(list(GM.subgraph_isomorphisms_iter())) > 0:
+                    if is_in(p1, p):
                         used.append(e)
 
         self.atomic_edit_operations = [a for a in self.atomic_edit_operations if a not in used] + \
@@ -224,3 +220,11 @@ class PalleteEncoder(json.JSONEncoder):
                   'edit_operations': [e.name for e in o.edit_operations],
                   'max_len': o.max_len}
         return result
+
+
+def is_in(G, pat):
+    s_pat, t_pat, _ = list(pat.edges(data=True))[0]
+    for s, t, d in G.edges(data=True):
+        if node_match_list(G.nodes[s], pat.nodes[s_pat]) and node_match_list(G.nodes[t], pat.nodes[t_pat]):
+            return True
+    return False

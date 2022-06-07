@@ -1,18 +1,19 @@
 import random
 import unittest
 
-import networkx as nx
 import numpy as np
 import torch
 from networkx.algorithms.isomorphism import is_isomorphic
 from torch_geometric.loader import DataLoader
 
-from m2_generator.edit_operation.edit_operation import edge_match, EditOperation
+from complex_edit_operations.yakindu import get_complex_add_transition_edit_operation, \
+    get_complex_add_region_with_entry_operation
+from m2_generator.edit_operation.edit_operation import edge_match
 from m2_generator.edit_operation.pallete import Pallete, add_inv_edges
 from m2_generator.model2graph.model2graph import get_graph_from_model
 from m2_generator.neural_model.data_generation import sequence2data
 from m2_generator.neural_model.generative_model import GenerativeModel, sample_graph
-from tests.test_edit_operation import path_model, path_metamodel, plot_graph
+from tests.test_edit_operation import path_model_yakindu, path_metamodel_yakindu, plot_graph
 
 seed = 123
 torch.manual_seed(seed)
@@ -24,47 +25,10 @@ def node_match(n1, n2):
     return n1['type'] == n2['type']
 
 
-def get_complex_add_transition_edit_operation():
-    pattern_ati = nx.MultiDiGraph()
-    pattern_ati.add_node(0, type=['State', 'Choice', 'Exit', 'FinalState',
-                                  'Synchronization', 'Entry'], ids={0, 1})
-    pattern_ati.add_node(1, type='Transition')
-    pattern_ati.add_edge(0, 1, type='outgoingTransitions')
-    pattern_ati.add_edge(0, 1, type='incomingTransitions')
-    # useless edges, they must be deleted by the algorithm
-    pattern_ati.add_edge(1, 0, type='source')
-    pattern_ati.add_edge(1, 0, type='target')
-
-    pattern_at = nx.MultiDiGraph()
-    pattern_at.add_node(0, type=['State', 'Choice', 'Exit', 'FinalState',
-                                 'Synchronization', 'Entry'], ids={0})
-    pattern_at.add_node(1, type='Transition')
-    pattern_at.add_node(2, type=['State', 'Choice', 'Exit', 'FinalState',
-                                 'Synchronization', 'Entry'], ids={1})
-    pattern_at.add_edge(0, 1, type='outgoingTransitions')
-    pattern_at.add_edge(2, 1, type='incomingTransitions')
-    pattern_at.add_edge(1, 0, type='source')
-    pattern_at.add_edge(1, 2, type='target')
-
-    patterns = [pattern_at, pattern_ati]
-
-    return EditOperation(patterns, ids=[0, 1], name='Add Transition Complex')
-
-
-def get_complex_add_region_with_entry_operation():
-    pattern_arwe = nx.MultiDiGraph()
-    pattern_arwe.add_node(0, type=['State', 'Statechart'], ids={0})
-    pattern_arwe.add_node(1, type='Region')
-    pattern_arwe.add_edge(0, 1, type='regions')
-    pattern_arwe.add_node(2, type='Entry')
-    pattern_arwe.add_edge(1, 2, type='vertices')
-    return EditOperation([pattern_arwe], ids=[0], name='Add Region with Entry')
-
-
 class TestNeuralModel(unittest.TestCase):
     def test_training(self):
-        model = get_graph_from_model(path_model, [path_metamodel])
-        pallete = Pallete(path_metamodel, 'Statechart')
+        model = get_graph_from_model(path_model_yakindu, [path_metamodel_yakindu])
+        pallete = Pallete(path_metamodel_yakindu, 'Statechart')
 
         print('Edit ops before')
         for e in pallete.edit_operations:
@@ -112,7 +76,7 @@ class TestNeuralModel(unittest.TestCase):
                 total_loss += loss.item()
                 loss.backward()
                 opt.step()
-            print(f'Epoch {e} loss {round(total_loss/len(loader), 4)}')
+            print(f'Epoch {e} loss {round(total_loss / len(loader), 4)}')
 
         model.eval()
         samples = [sample_graph(pallete.initial_graphs[0], pallete, model, 50, debug=False) for i in range(5)]
