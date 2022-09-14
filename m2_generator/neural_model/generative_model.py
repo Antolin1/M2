@@ -84,11 +84,14 @@ def sample_graph(G_0, pallete, model, max_size, debug=False, debug_trials=False,
 class GenerativeModel(nn.Module):
 
     def __init__(self, hidden_dim, vocab_nodes, vocab_edges, vocab_actions,
-                 attention=False, num_layers=2):
+                 attention=False, num_layers=2, vocab_att_val=None, vocab_att_type=None):
         super(GenerativeModel, self).__init__()
 
         self.emb_nodes = nn.Embedding(len(vocab_nodes), hidden_dim)
         self.emb_actions = nn.Embedding(len(vocab_actions), hidden_dim)
+        if vocab_att_val and vocab_att_type:
+            self.emb_att_value = nn.Embedding(len(vocab_att_val), hidden_dim)
+            self.emb_att_type = nn.Embedding(len(vocab_att_type), hidden_dim)
 
         self.convolution = pyg_nn.Sequential('x, edge_index, edge_type', [
             (pyg_nn.RGCNConv(hidden_dim, hidden_dim,
@@ -112,9 +115,15 @@ class GenerativeModel(nn.Module):
 
     # TODO: do it in batch
     # TODO: fix random seed
-    def get_action_and_finish(self, nodeTypes, edge_index, edge_attr, bs):
+    def get_action_and_finish(self, nodeTypes, edge_index, edge_attr, bs, node_att_type=None, node_att_value=None):
         # node embeddings
         nodeTypes = self.emb_nodes(nodeTypes)
+        if node_att_type and node_att_value:
+            # aggregation maybe change
+            node_att_value = self.emb_att_value(node_att_value).sum(dim=2)
+            node_att_type = self.emb_att_type(node_att_type)
+            node_att = node_att_value + node_att_type
+            nodeTypes += node_att.sim(dim=1)
         nodeEmbeddings = self.convolution(nodeTypes, edge_index, edge_attr)
         # graph embedding, bxhidden_dim
         h_G = None
@@ -181,7 +190,7 @@ class GenerativeModel(nn.Module):
 
     def forward(self, nodeTypes, edge_index, edge_attr,
                 bs, sequence_input, nodes_bs, len_seq,
-                action_input):
+                action_input, node_att_type=None, node_att_value=None):
 
         L = torch.max(len_seq)
         sequence_input = sequence_input[:, 0:L]
@@ -189,6 +198,15 @@ class GenerativeModel(nn.Module):
         # node embeddings
         N = nodeTypes.shape[0]
         nodeTypes = self.emb_nodes(nodeTypes)
+
+        if node_att_type and node_att_value:
+            # aggregation maybe change
+            node_att_value = self.emb_att_value(node_att_value).sum(dim=2)
+            node_att_type = self.emb_att_type(node_att_type)
+            node_att = node_att_value + node_att_type
+            nodeTypes += node_att.sim(dim=1)
+
+
         H = nodeTypes.shape[1]
         nodeEmbeddings = self.convolution(nodeTypes, edge_index, edge_attr)
         assert nodeEmbeddings.shape[0] == N
