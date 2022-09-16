@@ -3,6 +3,7 @@ import torch
 from torch_geometric.data import Data
 
 from m2_generator.edit_operation.pallete import SPECIAL
+from m2_generator.edit_operation.edit_operation import IDS
 
 
 def generate_tensors_from_graph(G, pallete, len_seq):
@@ -19,8 +20,8 @@ def generate_tensors_from_graph(G, pallete, len_seq):
     special_nodes_masked = [[0 if j < len_seq else -1 for j in range(pallete.max_len)]
                             for i in range(len(G))]
     for n in range(len(G)):
-        if 'ids' in G.nodes[n]:
-            for idd in G.nodes[n]['ids']:
+        if IDS in G.nodes[n]:
+            for idd in G.nodes[n][IDS]:
                 special_nodes[n][idd] = 1
                 special_nodes_masked[n][idd] = 1
     # edges

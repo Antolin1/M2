@@ -1,13 +1,14 @@
 import networkx as nx
 import torch
-import torch.nn.functional as F
 import torch.nn as nn
+import torch.nn.functional as F
 import torch_geometric.nn as pyg_nn
 from torch.distributions.categorical import Categorical
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 from torch_scatter import scatter
 from torch_scatter.composite import scatter_softmax
 
+from m2_generator.edit_operation.edit_operation import IDS
 from m2_generator.edit_operation.pallete import add_inv_edges
 from m2_generator.neural_model.data_generation import graph2data_preaction, graph2data_postaction
 
@@ -42,7 +43,7 @@ def sample_graph(G_0, pallete, model, max_size, debug=False, debug_trials=False,
                 sampled_node = model.get_nodes(h_G, nodeEmbeddings,
                                                batch, None, torch.tensor([sampled_action]),
                                                None, data.nodes)
-                G_aux.nodes[sampled_node.item()]['ids'] = {idd}
+                G_aux.nodes[sampled_node.item()][IDS] = {idd}
             else:
                 G_aux_inv = add_inv_edges(G_aux)
                 data = graph2data_postaction(G_aux_inv, pallete,
@@ -51,14 +52,14 @@ def sample_graph(G_0, pallete, model, max_size, debug=False, debug_trials=False,
                 sampled_node = model.get_nodes(h_G, nodeEmbeddings,
                                                batch, data.sequence, torch.tensor([sampled_action]),
                                                torch.tensor([j + 1]), data.nodes)
-                if not 'ids' in G_aux.nodes[sampled_node.item()]:
-                    G_aux.nodes[sampled_node.item()]['ids'] = {idd}
+                if not IDS in G_aux.nodes[sampled_node.item()]:
+                    G_aux.nodes[sampled_node.item()][IDS] = {idd}
                 else:
-                    G_aux.nodes[sampled_node.item()]['ids'].add(idd)
+                    G_aux.nodes[sampled_node.item()][IDS].add(idd)
         if debug:
             for n in G_aux:
-                if 'ids' in G_aux.nodes[n]:
-                    print('Node type', G_aux.nodes[n]['type'], 'Ids', G_aux.nodes[n]['ids'])
+                if IDS in G_aux.nodes[n]:
+                    print('Node type', G_aux.nodes[n]['type'], IDS, G_aux.nodes[n][IDS])
 
         applied = pallete.apply_edit(G_aux, sampled_action)
         if applied is not None:
@@ -73,8 +74,8 @@ def sample_graph(G_0, pallete, model, max_size, debug=False, debug_trials=False,
             # print('Cannot apply')
             trials = trials + 1
             for n in G_aux:
-                if 'ids' in G_aux.nodes[n]:
-                    del G_aux.nodes[n]['ids']
+                if IDS in G_aux.nodes[n]:
+                    del G_aux.nodes[n][IDS]
             finish = False
             if trials == max_trials:
                 return G_aux

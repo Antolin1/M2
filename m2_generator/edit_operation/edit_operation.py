@@ -6,6 +6,7 @@ import numpy as np
 from multiset import Multiset
 from networkx.algorithms.isomorphism import DiGraphMatcher
 
+IDS = 'ids'
 
 def edge_match(e1, e2):
     # TODO: check this, == or subset????
@@ -19,7 +20,7 @@ def edge_match(e1, e2):
 
 
 def node_match(n1, n2):
-    if 'ids' in n2:
+    if IDS in n2:
         return n1['type'] in n2['type']
     else:
         return ((n1['type'] == n2['type']) and
@@ -94,7 +95,7 @@ def remove_edit_pattern(pat, G, type):
     ## remove not border nodes
     border_nodes = []
     for n1, n2 in chosen.items():
-        if not ('ids' in pat_en.nodes[n2]):
+        if not (IDS in pat_en.nodes[n2]):
             new_G.remove_node(n1)
         else:
             border_nodes.append(n1)
@@ -121,7 +122,7 @@ def remove_edit_pattern(pat, G, type):
         del new_G.nodes[n]['out']
 
     for b in border_nodes:
-        new_G.nodes[b]['ids'] = pat_en.nodes[chosen[b]]['ids']
+        new_G.nodes[b][IDS] = pat_en.nodes[chosen[b]][IDS]
 
     return new_G
 
@@ -167,17 +168,17 @@ class EditOperation:
         map_edit = {}
 
         for n in G:
-            if 'ids' in G.nodes[n]:
-                key = G.nodes[n]['ids']
+            if IDS in G.nodes[n]:
+                key = G.nodes[n][IDS]
                 map_G[n] = max_id_add
                 for m in pat:
-                    if 'ids' in pat.nodes[m] and pat.nodes[m]['ids'] == key:
+                    if IDS in pat.nodes[m] and pat.nodes[m][IDS] == key:
                         map_edit[m] = max_id_add
                         break
                 max_id_add = max_id_add + 1
 
         for m in pat:
-            if not 'ids' in pat.nodes[m]:
+            if not IDS in pat.nodes[m]:
                 map_edit[m] = max_id_add
                 max_id_add = max_id_add + 1
 
@@ -194,8 +195,8 @@ class EditOperation:
         for n in G_compose:
             new_map[n] = j
             j = j + 1
-            if ('ids' in G_compose.nodes[n]):
-                del G_compose.nodes[n]['ids']
+            if (IDS in G_compose.nodes[n]):
+                del G_compose.nodes[n][IDS]
 
         G_compose_final = nx.relabel_nodes(G_compose, new_map)
         return G_compose_final
@@ -207,8 +208,8 @@ class EditOperation:
     def select_pattern(self, G):
         dic_spe_nodes_G = {}
         for n in G.nodes():
-            if 'ids' in G.nodes[n]:
-                for idd in G.nodes[n]['ids']:
+            if IDS in G.nodes[n]:
+                for idd in G.nodes[n][IDS]:
                     dic_spe_nodes_G[idd] = n
 
         dic_patterns = self.get_dict_nodes()
@@ -244,8 +245,8 @@ class EditOperation:
         for G in self.patterns:
             dic_spe = {}
             for n in G.nodes():
-                if 'ids' in G.nodes[n]:
-                    for idd in G.nodes[n]['ids']:
+                if IDS in G.nodes[n]:
+                    for idd in G.nodes[n][IDS]:
                         dic_spe[idd] = n
             result.append(dic_spe)
         return result

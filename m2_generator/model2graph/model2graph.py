@@ -2,6 +2,10 @@ import networkx as nx
 from pyecore.ecore import EReference, EAttribute, EClass
 from pyecore.resources import ResourceSet, URI
 
+ATTS = 'atts'
+TYPE = 'type'
+NONE = '<none>'
+
 
 def get_graph_from_model(path_model, path_metamodels, metafilter=None,
                          consider_atts=True):
@@ -82,18 +86,18 @@ def get_graph_from_model_elements(list_elements, metafilter=None,
                     list_att_val = []
                     for o2 in o.eGet(f):
                         if o2 is None:  # or o2.eIsProxy
-                            list_att_val.append('<none>')
+                            list_att_val.append(NONE)
                         else:
                             list_att_val.append(o2)
                     dic_attributes[f.name] = list_att_val
                 else:
                     o2 = o.eGet(f)
                     if o2 is None:  # or o2.eIsProxy
-                        dic_attributes[f.name] = '<none>'
+                        dic_attributes[f.name] = NONE
                     else:
                         dic_attributes[f.name] = o2
         if consider_atts:
-            G.nodes[nodes[o]]['atts'] = dic_attributes
+            G.nodes[nodes[o]][ATTS] = dic_attributes
     return G
 
 

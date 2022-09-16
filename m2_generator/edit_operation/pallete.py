@@ -3,7 +3,7 @@ import json
 import networkx as nx
 from networkx.algorithms.isomorphism import is_isomorphic
 
-from m2_generator.edit_operation.edit_operation import edge_match, EditOperation
+from m2_generator.edit_operation.edit_operation import edge_match, EditOperation, IDS
 from m2_generator.edit_operation.edit_operation_generation import get_edit_operations
 
 SEP_INV = '_inv'
@@ -91,7 +91,7 @@ class Pallete:
     # editOperations: {x:y} x is id and y is object edit op
     # dic_nodes: {x:y} x is str and y is id (same to dic_edges)
 
-    def __init__(self, path_metamodel, root_element):
+    def __init__(self, path_metamodel, root_element, vocab_att_type=None, vocab_att_val=None):
         self.root_element = root_element
         self.path_metamodel = path_metamodel
         self.atomic_edit_operations = get_edit_operations(path_metamodel)
@@ -101,6 +101,8 @@ class Pallete:
         self.dic_edges = compute_dic_edges(self.atomic_edit_operations, self.initial_graphs)
         self.edit_operations = self.complex_edit_operations + self.atomic_edit_operations
         self.max_len = max([len(e.ids) for e in self.edit_operations])
+        self.vocab_att_type = vocab_att_type
+        self.vocab_att_val = vocab_att_val
         assert len([e.name for e in self.edit_operations]) == len(set([e.name for e in self.edit_operations]))
 
     def graph_to_sequence(self, G):
@@ -118,8 +120,8 @@ class Pallete:
             if re is not None:
                 re_new = nx.MultiDiGraph(re[0])
                 for n in re_new:
-                    if 'ids' in re_new.nodes[n]:
-                        del re_new.nodes[n]['ids']
+                    if IDS in re_new.nodes[n]:
+                        del re_new.nodes[n][IDS]
                 return [(re[0], idd)] + self.graph_to_sequence(re_new)
         return []
 
