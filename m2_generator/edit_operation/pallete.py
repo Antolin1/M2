@@ -1,4 +1,5 @@
 import json
+import random
 
 import networkx as nx
 from networkx.algorithms.isomorphism import is_isomorphic
@@ -91,7 +92,7 @@ class Pallete:
     # editOperations: {x:y} x is id and y is object edit op
     # dic_nodes: {x:y} x is str and y is id (same to dic_edges)
 
-    def __init__(self, path_metamodel, root_element, vocab_att_type=None, vocab_att_val=None):
+    def __init__(self, path_metamodel, root_element, vocab_att_type=None, vocab_att_val=None, random=False):
         self.root_element = root_element
         self.path_metamodel = path_metamodel
         self.atomic_edit_operations = get_edit_operations(path_metamodel)
@@ -103,11 +104,16 @@ class Pallete:
         self.max_len = max([len(e.ids) for e in self.edit_operations])
         self.vocab_att_type = vocab_att_type
         self.vocab_att_val = vocab_att_val
+        self.random = random
         assert len([e.name for e in self.edit_operations]) == len(set([e.name for e in self.edit_operations]))
 
     def graph_to_sequence(self, G):
         list_ids = list(range(0, len(self.edit_operations)))
-        list_ids = sorted(list_ids, reverse=False)
+        if not self.random:
+            list_ids = sorted(list_ids, reverse=False)
+        else:
+            list_ids = sorted(list_ids, reverse=False)
+            random.shuffle(list_ids)
 
         for intial_graph in self.initial_graphs:
             if is_isomorphic(G, intial_graph,
@@ -189,6 +195,7 @@ class Pallete:
         self.path_metamodel = dic['path_metamodel']
         self.dic_nodes = dic['dic_nodes']
         self.dic_edges = dic['dic_edges']
+        self.random = dic['random']
         self.max_len = dic['max_len']
         self.initial_graphs = [get_initial_graph(self.root_element)]
         new_atomic = []
@@ -220,7 +227,8 @@ class PalleteEncoder(json.JSONEncoder):
                   'dic_nodes': o.dic_nodes,
                   'dic_edges': o.dic_edges,
                   'edit_operations': [e.name for e in o.edit_operations],
-                  'max_len': o.max_len}
+                  'max_len': o.max_len,
+                  'random': o.random}
         return result
 
 

@@ -9,8 +9,54 @@ from torch_scatter import scatter
 from torch_scatter.composite import scatter_softmax
 
 from m2_generator.edit_operation.edit_operation import IDS
-from m2_generator.edit_operation.pallete import add_inv_edges
+from m2_generator.edit_operation.pallete import add_inv_edges, remove_inv_edges
 from m2_generator.neural_model.data_generation import graph2data_preaction, graph2data_postaction
+
+
+def recommend_action(G_0, pallete, model, debug=False):
+    g = pallete.remove_out_of_scope(G_0, pallete)
+    g = add_inv_edges(g)
+    data = graph2data_preaction(g, pallete)
+    batch = torch.tensor([0] * len(g))
+    action, h_G, nodeEmbeddings = model.get_actions_h_g_embeddings(data.x, data.edge_index,
+                                                                   torch.squeeze(data.edge_attr, dim=1),
+                                                                   batch, data.att_types, data.att_val)
+    if debug:
+        print('Actions: ', F.softmax(action))
+    action = torch.topk(action, 1).indices
+    if debug:
+        print('Action', action.item(), pallete.edit_operations[action.item()].name)
+
+    special_nodes = pallete.get_special_nodes(action.item())
+    for j, idd in enumerate(special_nodes):
+        if idd == 0:
+            data = graph2data_preaction(g, pallete)
+            sampled_node = model.get_nodes(h_G, nodeEmbeddings,
+                                           batch, None, torch.tensor([action.item()]),
+                                           None, data.nodes)
+            sampled_node = torch.topk(sampled_node, 1).indices
+            g.nodes[sampled_node.item()][IDS] = {idd}
+        else:
+            data = graph2data_postaction(g, pallete,
+                                         j + 1)
+            # print('Sequence:',data.sequence)
+            sampled_node = model.get_nodes(h_G, nodeEmbeddings,
+                                           batch, data.sequence, torch.tensor([action.item()]),
+                                           torch.tensor([j + 1]), data.nodes)
+            sampled_node = torch.topk(sampled_node, 1).indices
+            if IDS not in g.nodes[sampled_node.item()]:
+                g.nodes[sampled_node.item()][IDS] = {idd}
+            else:
+                g.nodes[sampled_node.item()][IDS].add(idd)
+    applied = pallete.apply_edit(g, action.item())
+    if applied is not None:
+        if debug:
+            print(f'Action {pallete.edit_operations[action.item()].name} applied')
+        return remove_inv_edges(applied)
+    else:
+        if debug:
+            print(f'Cannot apply action {pallete.edit_operations[action.item()].name}')
+        return None
 
 
 def sample_graph(G_0, pallete, model, max_size, debug=False, debug_trials=False, max_trials=100):
@@ -114,17 +160,15 @@ class GenerativeModel(nn.Module):
         if self.globalattention:
             self.globalAttentionFinish = pyg_nn.GlobalAttention(gate_nn=nn.Linear(hidden_dim, 1))
 
-    # TODO: do it in batch
-    # TODO: fix random seed
-    def get_action_and_finish(self, nodeTypes, edge_index, edge_attr, bs, node_att_type=None, node_att_value=None):
+    def get_actions_h_g_embeddings(self, nodeTypes, edge_index, edge_attr, bs, node_att_type=None, node_att_value=None):
         # node embeddings
         nodeTypes = self.emb_nodes(nodeTypes)
-        if node_att_type and node_att_value:
+        if node_att_type != None and node_att_value != None:
             # aggregation maybe change
             node_att_value = self.emb_att_value(node_att_value).sum(dim=2)
             node_att_type = self.emb_att_type(node_att_type)
             node_att = node_att_value + node_att_type
-            nodeTypes += node_att.sim(dim=1)
+            nodeTypes += node_att.sum(dim=1)
         nodeEmbeddings = self.convolution(nodeTypes, edge_index, edge_attr)
         # graph embedding, bxhidden_dim
         h_G = None
@@ -135,12 +179,25 @@ class GenerativeModel(nn.Module):
         # infer action
         action = torch.relu(self.linAction(h_G))
         action = self.linAction_final(action)
+        return action, h_G, nodeEmbeddings
+
+    # TODO: do it in batch
+    # TODO: fix random seed
+    def get_action_and_finish(self, nodeTypes, edge_index, edge_attr, bs, node_att_type=None, node_att_value=None):
+        action, h_G, nodeEmbeddings = self.get_actions_h_g_embeddings(self, nodeTypes, edge_index, edge_attr, bs,
+                                                                      node_att_type, node_att_value)
         m = Categorical(F.softmax(torch.squeeze(action)))
         # infer finished
         final = torch.relu(self.finishedLin(h_G))
         final = torch.sigmoid(self.finishedFinal(final))
         isLast = torch.bernoulli(final)
         return m.sample(), isLast, h_G, nodeEmbeddings
+
+    def get_nodes_sample(self, h_G, nodeEmbeddings,
+                         bs, sequence_input, action_input, len_seq, nodes_bs):
+        m = Categorical(self.get_nodes(h_G, nodeEmbeddings,
+                                       bs, sequence_input, action_input, len_seq, nodes_bs))
+        return m.sample()
 
     def get_nodes(self, h_G, nodeEmbeddings,
                   bs, sequence_input, action_input, len_seq, nodes_bs):
@@ -185,9 +242,8 @@ class GenerativeModel(nn.Module):
         #    print(nodes_final)
         #    print(nodes_final[:,-1])
         #    print()
-        m = Categorical(nodes_final[:, -1])
 
-        return m.sample()
+        return nodes_final[:, -1]
 
     def forward(self, nodeTypes, edge_index, edge_attr,
                 bs, sequence_input, nodes_bs, len_seq,
@@ -200,13 +256,12 @@ class GenerativeModel(nn.Module):
         N = nodeTypes.shape[0]
         nodeTypes = self.emb_nodes(nodeTypes)
 
-        if node_att_type and node_att_value:
+        if node_att_type != None and node_att_value != None:
             # aggregation maybe change
             node_att_value = self.emb_att_value(node_att_value).sum(dim=2)
             node_att_type = self.emb_att_type(node_att_type)
             node_att = node_att_value + node_att_type
-            nodeTypes += node_att.sim(dim=1)
-
+            nodeTypes += node_att.sum(dim=1)
 
         H = nodeTypes.shape[1]
         nodeEmbeddings = self.convolution(nodeTypes, edge_index, edge_attr)

@@ -40,6 +40,9 @@ class Vocabulary:
             pads = [self.vocab[self.pad_tok] for _ in range(max_len - len(ids))]
             return ids + pads
 
+    def __len__(self):
+        return len(self.vocab)
+
 
 '''
     https://stackoverflow.com/questions/29916065/how-to-do-camelcase-split-in-python
