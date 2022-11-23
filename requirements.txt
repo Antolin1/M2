@@ -19,12 +19,3 @@ multiprocess==0.70.12.2
 pyemd==0.5.1
 tqdm
 prettytable
-torch
-torchvision
-torchaudio
--f https://data.pyg.org/whl/torch-1.11.0+cu102.html
-torch-scatter
-torch-sparse
-torch-cluster
-torch-spline-conv
-torch-geometric
